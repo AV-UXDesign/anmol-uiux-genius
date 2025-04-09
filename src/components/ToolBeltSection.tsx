@@ -4,74 +4,85 @@ import { Card } from '@/components/ui/card';
 
 const ToolBeltSection = () => {
   const designTools = [
-    { name: 'Figma', icon: '🎨' },
-    { name: 'Adobe XD', icon: '🖌️' },
-    { name: 'Miro', icon: '🧠' },
-    { name: 'Photoshop', icon: '📷' },
-    { name: 'Illustrator', icon: '✏️' }
+    { name: 'Figma', icon: '🎨', level: 'Expert' },
+    { name: 'Adobe XD', icon: '🖌️', level: 'Advanced' },
+    { name: 'Miro', icon: '🧠', level: 'Expert' },
+    { name: 'Sketch', icon: '✏️', level: 'Advanced' },
+    { name: 'InVision', icon: '📱', level: 'Advanced' }
   ];
 
   const techTools = [
-    { name: 'Angular', icon: '🅰️' },
-    { name: 'HTML5', icon: '🌐' },
-    { name: 'SCSS', icon: '🎨' },
-    { name: 'TypeScript', icon: '📝' },
-    { name: 'Git', icon: '📊' }
+    { name: 'Angular', icon: '🅰️', level: 'Advanced' },
+    { name: 'HTML5/CSS3', icon: '🌐', level: 'Expert' },
+    { name: 'JavaScript', icon: '📝', level: 'Advanced' },
+    { name: 'React', icon: '⚛️', level: 'Intermediate' },
+    { name: 'Git/Version Control', icon: '📊', level: 'Advanced' }
+  ];
+
+  const designProcesses = [
+    { name: 'User Research', icon: '🔍', level: 'Expert' },
+    { name: 'Wireframing', icon: '📐', level: 'Expert' },
+    { name: 'Prototyping', icon: '📲', level: 'Advanced' },
+    { name: 'Usability Testing', icon: '📋', level: 'Expert' },
+    { name: 'Design Systems', icon: '🧩', level: 'Advanced' }
   ];
 
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4 bg-gray-50">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center neon-text-purple">
-          Tool Belt
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-800">
+          Professional Toolkit
         </h2>
+        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          A comprehensive set of tools and methodologies I've mastered to deliver end-to-end design solutions that align with business goals.
+        </p>
         
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Design Stack */}
-          <div className="glass-card animate-fade-in" style={{animationDelay: '0.2s'}}>
-            <h3 className="text-2xl font-bold mb-6 text-center">Design Stack</h3>
-            <div className="grid grid-cols-3 gap-4">
-              {designTools.map((tool, index) => (
-                <Card key={tool.name} className="glass hover:neon-border transition-all duration-300 flex flex-col items-center justify-center p-4 aspect-square">
-                  <div className="text-4xl mb-2">{tool.icon}</div>
-                  <div className="font-medium">{tool.name}</div>
-                </Card>
-              ))}
-              {/* Visual UI Kit Preview */}
-              <Card className="glass col-span-3 p-4 h-40 mt-4 overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="grid grid-cols-4 gap-2 w-full p-2">
-                    {Array.from({length: 8}).map((_, i) => (
-                      <div key={i} className="h-8 rounded-md bg-neon-blue/20 animate-pulse-glow" style={{animationDelay: `${i * 0.1}s`}}></div>
-                    ))}
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Design Tools */}
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">Design Tools</h3>
+            <div className="space-y-4">
+              {designTools.map((tool) => (
+                <div key={tool.name} className="flex items-center justify-between p-3 border-b border-gray-100">
+                  <div className="flex items-center">
+                    <span className="text-2xl mr-3">{tool.icon}</span>
+                    <span className="font-medium">{tool.name}</span>
                   </div>
+                  <span className="text-sm px-2 py-1 bg-blue-100 text-blue-800 rounded-full">{tool.level}</span>
                 </div>
-                <div className="absolute bottom-2 right-2 text-xs text-gray-400">Design System Preview</div>
-              </Card>
+              ))}
             </div>
           </div>
           
-          {/* Tech Stack */}
-          <div className="glass-card animate-fade-in" style={{animationDelay: '0.4s'}}>
-            <h3 className="text-2xl font-bold mb-6 text-center">Tech Stack</h3>
-            <div className="grid grid-cols-3 gap-4">
-              {techTools.map((tool, index) => (
-                <Card key={tool.name} className="glass hover:neon-border transition-all duration-300 flex flex-col items-center justify-center p-4 aspect-square">
-                  <div className="text-4xl mb-2">{tool.icon}</div>
-                  <div className="font-medium">{tool.name}</div>
-                </Card>
-              ))}
-              {/* Animated Code Block */}
-              <Card className="glass col-span-3 p-4 h-40 mt-4 overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-                  <pre className="text-xs text-green-400 animate-float">
-                    <code>
-                      {`import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  template: \`<div>UI/UX Magic</div>\`,\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent { }`}
-                    </code>
-                  </pre>
+          {/* Technical Skills */}
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">Technical Skills</h3>
+            <div className="space-y-4">
+              {techTools.map((tool) => (
+                <div key={tool.name} className="flex items-center justify-between p-3 border-b border-gray-100">
+                  <div className="flex items-center">
+                    <span className="text-2xl mr-3">{tool.icon}</span>
+                    <span className="font-medium">{tool.name}</span>
+                  </div>
+                  <span className="text-sm px-2 py-1 bg-blue-100 text-blue-800 rounded-full">{tool.level}</span>
                 </div>
-                <div className="absolute bottom-2 right-2 text-xs text-gray-400">Angular Component</div>
-              </Card>
+              ))}
+            </div>
+          </div>
+          
+          {/* Design Process */}
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">Design Process</h3>
+            <div className="space-y-4">
+              {designProcesses.map((process) => (
+                <div key={process.name} className="flex items-center justify-between p-3 border-b border-gray-100">
+                  <div className="flex items-center">
+                    <span className="text-2xl mr-3">{process.icon}</span>
+                    <span className="font-medium">{process.name}</span>
+                  </div>
+                  <span className="text-sm px-2 py-1 bg-blue-100 text-blue-800 rounded-full">{process.level}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

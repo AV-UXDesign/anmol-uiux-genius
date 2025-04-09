@@ -17,55 +17,55 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-dark-200 to-dark-300">
+    <section className="py-20 px-4 bg-gray-50">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-800">
           Let's Create Impact Together
         </h2>
-        <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
-          I'm open to discussing new opportunities, sharing insights, or just having a chat about design and development.
+        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          I'm open to discussing new opportunities, sharing insights, or just having a conversation about design and product strategy.
         </p>
         
-        <Card className="border border-gray-800 bg-dark-100/50 shadow-lg overflow-hidden">
+        <Card className="border border-gray-200 bg-white shadow-lg overflow-hidden">
           <div className="grid md:grid-cols-2 gap-8 p-6">
             <div>
-              <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
+              <h3 className="text-2xl font-bold mb-6 text-gray-800">Get in Touch</h3>
               
               <div className="space-y-4">
                 <a 
-                  href="mailto:contact@anmol.com" 
-                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-700 bg-dark-200/50 hover:bg-dark-200 transition-all duration-300"
+                  href="mailto:contact@yourname.com" 
+                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300"
                 >
-                  <Mail className="h-5 w-5 text-blue-400" />
-                  <span>contact@anmol.com</span>
+                  <Mail className="h-5 w-5 text-blue-600" />
+                  <span className="text-gray-700">contact@yourname.com</span>
                 </a>
                 
                 <a 
-                  href="tel:+919876543210" 
-                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-700 bg-dark-200/50 hover:bg-dark-200 transition-all duration-300"
+                  href="tel:+1234567890" 
+                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300"
                 >
-                  <Phone className="h-5 w-5 text-blue-400" />
-                  <span>+91 9876 543 210</span>
+                  <Phone className="h-5 w-5 text-blue-600" />
+                  <span className="text-gray-700">+1 (234) 567-890</span>
                 </a>
                 
                 <a 
-                  href="https://linkedin.com/in/anmol" 
+                  href="https://linkedin.com/in/yourusername" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-700 bg-dark-200/50 hover:bg-dark-200 transition-all duration-300"
+                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300"
                 >
-                  <Linkedin className="h-5 w-5 text-blue-400" />
-                  <span>linkedin.com/in/anmol</span>
+                  <Linkedin className="h-5 w-5 text-blue-600" />
+                  <span className="text-gray-700">linkedin.com/in/yourusername</span>
                 </a>
                 
                 <a 
-                  href="https://github.com/anmol" 
+                  href="https://github.com/yourusername" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-700 bg-dark-200/50 hover:bg-dark-200 transition-all duration-300"
+                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300"
                 >
-                  <Github className="h-5 w-5 text-blue-400" />
-                  <span>github.com/anmol</span>
+                  <Github className="h-5 w-5 text-blue-600" />
+                  <span className="text-gray-700">github.com/yourusername</span>
                 </a>
               </div>
               
@@ -80,15 +80,15 @@ const ContactSection = () => {
               </div>
             </div>
             
-            <div className="flex items-center justify-center bg-dark-300/30 rounded-lg p-6">
+            <div className="flex items-center justify-center bg-gray-50 rounded-lg p-6">
               <div className="text-center">
-                <div className="w-48 h-48 bg-white rounded-md flex items-center justify-center mx-auto mb-4">
-                  <div className="text-black text-center">
+                <div className="w-48 h-48 bg-white rounded-md flex items-center justify-center mx-auto mb-4 border border-gray-200 shadow-sm">
+                  <div className="text-gray-800 text-center">
                     <p className="font-bold">QR Code</p>
-                    <p className="text-xs">Scan to view portfolio</p>
+                    <p className="text-xs text-gray-500">Scan to view portfolio</p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-400">Scan for portfolio mobile view</p>
+                <p className="text-sm text-gray-500">Scan for portfolio mobile view</p>
               </div>
             </div>
           </div>
