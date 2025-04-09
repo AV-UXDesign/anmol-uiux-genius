@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Download, Linkedin, GitHub, Mail, Phone } from 'lucide-react';
+import { Download, Linkedin, Github, Mail, Phone } from 'lucide-react';
 
 const ContactSection = () => {
   return (
@@ -53,7 +52,7 @@ const ContactSection = () => {
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 glass p-3 rounded-md hover:neon-border transition-all duration-300"
                 >
-                  <GitHub className="h-5 w-5 text-neon-blue" />
+                  <Github className="h-5 w-5 text-neon-blue" />
                   <span>github.com/anmol</span>
                 </a>
               </div>
