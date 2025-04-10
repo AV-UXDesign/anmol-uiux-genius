@@ -31,9 +31,9 @@ const HeroSection = () => {
   };
 
   return (
-    <div id="home" ref={heroRef} className="relative min-h-screen w-full flex flex-col justify-center items-center px-4 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
+    <div id="home" ref={heroRef} className="relative min-h-screen w-full flex flex-col justify-center items-center px-4 bg-black overflow-hidden">
       {/* Animated Background Dots/Particles */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-20 h-20 rounded-full bg-blue-500/20 animate-pulse" style={{ animationDuration: '7s' }}></div>
         <div className="absolute top-3/4 left-1/3 w-32 h-32 rounded-full bg-purple-500/20 animate-pulse" style={{ animationDuration: '12s' }}></div>
         <div className="absolute top-1/3 right-1/4 w-24 h-24 rounded-full bg-teal-500/20 animate-pulse" style={{ animationDuration: '9s' }}></div>
@@ -59,7 +59,7 @@ const HeroSection = () => {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
           <Button 
-            className="px-6 py-6 text-lg glass bg-blue-600/20 hover:bg-blue-600/40 text-white border border-blue-500/30 w-full sm:w-auto neon-border"
+            className="px-6 py-6 text-lg glass bg-blue-600/10 hover:bg-blue-600/20 text-white border border-blue-500/30 w-full sm:w-auto neon-border"
             variant="default"
             onClick={scrollToWork}
           >
@@ -67,7 +67,7 @@ const HeroSection = () => {
             View My Work
           </Button>
           <Button 
-            className="px-6 py-6 text-lg glass bg-transparent hover:bg-white/10 text-white border border-white/20 w-full sm:w-auto"
+            className="px-6 py-6 text-lg glass bg-transparent hover:bg-white/5 text-white border border-white/10 w-full sm:w-auto"
             variant="outline"
           >
             <Download className="mr-2 h-5 w-5" /> 

@@ -98,9 +98,9 @@
     @apply transition-all duration-300 hover:shadow-lg;
   }
 
-  /* Glassmorphism Styles */
+  /* Glassmorphism Styles - Enhanced for pure black theme */
   .glass {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl;
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
   }
   
   .glass-card {

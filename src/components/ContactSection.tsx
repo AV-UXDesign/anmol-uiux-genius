@@ -17,7 +17,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
+    <section className="py-20 px-4 bg-black">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-white">
           Let's Create Impact Together
@@ -34,7 +34,7 @@ const ContactSection = () => {
               <div className="space-y-4">
                 <a 
                   href="mailto:contact@yourname.com" 
-                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-700 hover:border-blue-500 glass hover:bg-blue-900/20 transition-all duration-300"
+                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-800 hover:border-blue-500 glass hover:bg-blue-900/10 transition-all duration-300"
                 >
                   <Mail className="h-5 w-5 text-blue-400" />
                   <span className="text-gray-300">contact@yourname.com</span>
@@ -42,7 +42,7 @@ const ContactSection = () => {
                 
                 <a 
                   href="tel:+1234567890" 
-                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-700 hover:border-blue-500 glass hover:bg-blue-900/20 transition-all duration-300"
+                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-800 hover:border-blue-500 glass hover:bg-blue-900/10 transition-all duration-300"
                 >
                   <Phone className="h-5 w-5 text-blue-400" />
                   <span className="text-gray-300">+1 (234) 567-890</span>
@@ -52,7 +52,7 @@ const ContactSection = () => {
                   href="https://linkedin.com/in/yourusername" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-700 hover:border-blue-500 glass hover:bg-blue-900/20 transition-all duration-300"
+                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-800 hover:border-blue-500 glass hover:bg-blue-900/10 transition-all duration-300"
                 >
                   <Linkedin className="h-5 w-5 text-blue-400" />
                   <span className="text-gray-300">linkedin.com/in/yourusername</span>
@@ -62,7 +62,7 @@ const ContactSection = () => {
                   href="https://github.com/yourusername" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-700 hover:border-blue-500 glass hover:bg-blue-900/20 transition-all duration-300"
+                  className="flex items-center space-x-3 p-3 rounded-md border border-gray-800 hover:border-blue-500 glass hover:bg-blue-900/10 transition-all duration-300"
                 >
                   <Github className="h-5 w-5 text-blue-400" />
                   <span className="text-gray-300">github.com/yourusername</span>
@@ -72,7 +72,7 @@ const ContactSection = () => {
               <div className="mt-8">
                 <Button 
                   onClick={handleResumeDownload}
-                  className="w-full glass bg-blue-600/30 hover:bg-blue-600/50 text-white neon-border"
+                  className="w-full glass bg-blue-600/10 hover:bg-blue-600/20 text-white neon-border"
                 >
                   <Download className="mr-2 h-5 w-5" /> 
                   Download Resume (PDF)
@@ -82,7 +82,7 @@ const ContactSection = () => {
             
             <div className="flex items-center justify-center glass p-6 rounded-lg">
               <div className="text-center">
-                <div className="w-48 h-48 glass flex items-center justify-center mx-auto mb-4 border border-gray-700 shadow-lg">
+                <div className="w-48 h-48 glass flex items-center justify-center mx-auto mb-4 border border-gray-800 shadow-lg">
                   <div className="text-white text-center">
                     <p className="font-bold">QR Code</p>
                     <p className="text-xs text-gray-400">Scan to view portfolio</p>

@@ -62,7 +62,7 @@ const FloatingNav = () => {
           <button
             onClick={() => scrollToSection('home')}
             className={`p-3 rounded-full transition-all duration-300 ${
-              activeSection === 'home' ? 'bg-blue-600/30 text-blue-400 scale-110 neon-text-blue' : 'text-gray-400 hover:text-white'
+              activeSection === 'home' ? 'bg-blue-600/20 text-blue-400 scale-110 neon-text-blue' : 'text-gray-400 hover:text-white'
             }`}
             aria-label="Home"
           >
@@ -72,7 +72,7 @@ const FloatingNav = () => {
           <button
             onClick={() => scrollToSection('work')}
             className={`p-3 rounded-full transition-all duration-300 ${
-              activeSection === 'work' ? 'bg-blue-600/30 text-blue-400 scale-110 neon-text-blue' : 'text-gray-400 hover:text-white'
+              activeSection === 'work' ? 'bg-blue-600/20 text-blue-400 scale-110 neon-text-blue' : 'text-gray-400 hover:text-white'
             }`}
             aria-label="Work"
           >
@@ -82,7 +82,7 @@ const FloatingNav = () => {
           <button
             onClick={() => scrollToSection('about')}
             className={`p-3 rounded-full transition-all duration-300 ${
-              activeSection === 'about' ? 'bg-blue-600/30 text-blue-400 scale-110 neon-text-blue' : 'text-gray-400 hover:text-white'
+              activeSection === 'about' ? 'bg-blue-600/20 text-blue-400 scale-110 neon-text-blue' : 'text-gray-400 hover:text-white'
             }`}
             aria-label="About"
           >
@@ -92,7 +92,7 @@ const FloatingNav = () => {
           <button
             onClick={() => scrollToSection('contact')}
             className={`p-3 rounded-full transition-all duration-300 ${
-              activeSection === 'contact' ? 'bg-blue-600/30 text-blue-400 scale-110 neon-text-blue' : 'text-gray-400 hover:text-white'
+              activeSection === 'contact' ? 'bg-blue-600/20 text-blue-400 scale-110 neon-text-blue' : 'text-gray-400 hover:text-white'
             }`}
             aria-label="Contact"
           >

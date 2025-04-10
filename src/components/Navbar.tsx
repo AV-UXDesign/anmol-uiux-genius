@@ -41,7 +41,7 @@ const Navbar = () => {
               <a href="#about" className="text-gray-300 hover:text-white hover:neon-text-blue transition-all">About</a>
               <a href="#contact" className="text-gray-300 hover:text-white hover:neon-text-blue transition-all">Contact</a>
               <Button 
-                className="glass neon-border bg-neon-blue/10 hover:bg-neon-blue/20"
+                className="glass neon-border bg-blue-600/5 hover:bg-blue-600/10"
               >
                 Download CV
               </Button>
@@ -71,7 +71,7 @@ const Navbar = () => {
             <a href="#about" className="text-xl text-white hover:neon-text-blue transition-all" onClick={toggleMobileMenu}>About</a>
             <a href="#contact" className="text-xl text-white hover:neon-text-blue transition-all" onClick={toggleMobileMenu}>Contact</a>
             <Button 
-              className="glass neon-border bg-neon-blue/10 hover:bg-neon-blue/20 w-full mt-4"
+              className="glass neon-border bg-blue-600/5 hover:bg-blue-600/10 w-full mt-4"
               onClick={toggleMobileMenu}
             >
               Download CV
