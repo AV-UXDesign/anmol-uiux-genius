@@ -72,24 +72,50 @@
     @apply border-border;
   }
 
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    background-color: #000;
+    color: #fff;
   }
 }
 
-/* Professional Design Utilities */
+/* Apple-inspired UI Utilities */
 @layer components {
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold text-gray-800 mb-4;
+    @apply text-3xl md:text-4xl font-bold text-white mb-4;
   }
   
   .section-subheading {
-    @apply text-lg text-gray-600 mb-8 max-w-2xl mx-auto;
+    @apply text-lg text-gray-300 mb-8 max-w-2xl mx-auto;
   }
   
   .card-hover {
     @apply transition-all duration-300 hover:shadow-lg;
+  }
+
+  /* Glassmorphism Styles */
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl;
+  }
+  
+  .glass-card {
+    @apply bg-black/60 backdrop-blur-lg border border-gray-800/50 rounded-2xl shadow-xl;
+  }
+  
+  /* Apple-inspired neon effects */
+  .neon-text-blue {
+    @apply text-blue-500;
+    text-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  }
+  
+  .neon-border {
+    @apply border border-blue-500/50;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3), inset 0 0 5px rgba(59, 130, 246, 0.2);
   }
   
   .btn-primary {
@@ -99,18 +125,42 @@
   .btn-outline {
     @apply border border-blue-600 text-blue-600 hover:bg-blue-50;
   }
+  
+  /* Background gradients */
+  .bg-neon-blue {
+    @apply bg-blue-500;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
+  }
 }
 
 /* Animation Utilities */
 @layer utilities {
+  /* Fade-in animation */
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out forwards;
   }
   
+  /* Slide-up animation */
   .animate-slide-up {
     animation: slideUp 0.5s ease-out forwards;
   }
   
+  /* Slide-down animation */
+  .animate-slide-down {
+    animation: slideDown 0.6s ease-out forwards;
+  }
+  
+  /* Scale animation */
+  .animate-scale {
+    animation: scale 0.5s ease-out forwards;
+  }
+  
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+  
+  /* Keyframes */
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -119,5 +169,31 @@
   @keyframes slideUp {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes scale {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  /* Parallax effects */
+  .parallax-slow {
+    @apply transition-transform duration-1000;
+    transform: translateY(var(--scroll-y, 0));
+  }
+  
+  .parallax-medium {
+    @apply transition-transform duration-700;
+    transform: translateY(calc(var(--scroll-y, 0) * 0.7));
+  }
+  
+  .parallax-fast {
+    @apply transition-transform duration-500;
+    transform: translateY(calc(var(--scroll-y, 0) * 0.4));
   }
 }

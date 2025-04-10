@@ -36,14 +36,14 @@ const Navbar = () => {
             
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-6">
-              <a href="#" className="text-gray-300 hover:text-white hover:neon-text-blue transition-all">Home</a>
-              <a href="#" className="text-gray-300 hover:text-white hover:neon-text-blue transition-all">Projects</a>
-              <a href="#" className="text-gray-300 hover:text-white hover:neon-text-blue transition-all">Skills</a>
-              <a href="#" className="text-gray-300 hover:text-white hover:neon-text-blue transition-all">About</a>
+              <a href="#home" className="text-gray-300 hover:text-white hover:neon-text-blue transition-all">Home</a>
+              <a href="#work" className="text-gray-300 hover:text-white hover:neon-text-blue transition-all">Projects</a>
+              <a href="#about" className="text-gray-300 hover:text-white hover:neon-text-blue transition-all">About</a>
+              <a href="#contact" className="text-gray-300 hover:text-white hover:neon-text-blue transition-all">Contact</a>
               <Button 
                 className="glass neon-border bg-neon-blue/10 hover:bg-neon-blue/20"
               >
-                Contact Me
+                Download CV
               </Button>
             </div>
             
@@ -66,15 +66,15 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 glass-card pt-20">
           <div className="flex flex-col items-center space-y-6 p-8">
-            <a href="#" className="text-xl text-white hover:neon-text-blue transition-all" onClick={toggleMobileMenu}>Home</a>
-            <a href="#" className="text-xl text-white hover:neon-text-blue transition-all" onClick={toggleMobileMenu}>Projects</a>
-            <a href="#" className="text-xl text-white hover:neon-text-blue transition-all" onClick={toggleMobileMenu}>Skills</a>
-            <a href="#" className="text-xl text-white hover:neon-text-blue transition-all" onClick={toggleMobileMenu}>About</a>
+            <a href="#home" className="text-xl text-white hover:neon-text-blue transition-all" onClick={toggleMobileMenu}>Home</a>
+            <a href="#work" className="text-xl text-white hover:neon-text-blue transition-all" onClick={toggleMobileMenu}>Projects</a>
+            <a href="#about" className="text-xl text-white hover:neon-text-blue transition-all" onClick={toggleMobileMenu}>About</a>
+            <a href="#contact" className="text-xl text-white hover:neon-text-blue transition-all" onClick={toggleMobileMenu}>Contact</a>
             <Button 
               className="glass neon-border bg-neon-blue/10 hover:bg-neon-blue/20 w-full mt-4"
               onClick={toggleMobileMenu}
             >
-              Contact Me
+              Download CV
             </Button>
           </div>
         </div>
