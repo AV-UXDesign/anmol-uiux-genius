@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, ExternalLink, FileText } from 'lucide-react';
 
@@ -22,7 +21,7 @@ const CaseStudySection = () => {
         "97% satisfaction score from post-implementation survey"
       ],
       tools: "User Research, Journey Mapping, Figma, Angular, TypeScript",
-      image: "https://placehold.co/600x400/f8f9fa/343a40?text=Health+Dashboard"
+      image: "https://placehold.co/600x400/0a0a0a/4287f5?text=Health+Dashboard"
     },
     {
       id: 2,
@@ -38,7 +37,7 @@ const CaseStudySection = () => {
         "Decreased training time for customer service representatives by 40%"
       ],
       tools: "Stakeholder Workshops, Information Architecture, Wireframing, Adobe XD, Axure RP",
-      image: "https://placehold.co/600x400/f8f9fa/343a40?text=Financial+Portal"
+      image: "https://placehold.co/600x400/0a0a0a/4287f5?text=Financial+Portal"
     },
     {
       id: 3,
@@ -54,7 +53,7 @@ const CaseStudySection = () => {
         "42% increase in user retention vs. previous platform"
       ],
       tools: "User Interviews, Competitive Analysis, Prototyping, Figma, Usability Testing",
-      image: "https://placehold.co/600x400/f8f9fa/343a40?text=Investment+Platform"
+      image: "https://placehold.co/600x400/0a0a0a/4287f5?text=Investment+Platform"
     }
   ];
   
@@ -69,12 +68,12 @@ const CaseStudySection = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-black">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-800">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center neon-text-blue">
           Featured Case Studies
         </h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
           A selection of projects showcasing my strategic approach to solving complex design challenges and delivering measurable business results.
         </p>
         
@@ -82,89 +81,113 @@ const CaseStudySection = () => {
           {/* Navigation Arrows */}
           <button 
             onClick={prevCase}
-            className="absolute top-1/2 -left-4 md:-left-10 -translate-y-1/2 z-10 p-2 rounded-full bg-white shadow-lg hover:bg-gray-100 transition-all"
+            className="absolute top-1/2 -left-4 md:-left-10 -translate-y-1/2 z-10 p-2 rounded-full glass hover:neon-border transition-all"
             aria-label="Previous case study"
           >
-            <ChevronLeft className="h-6 w-6 text-gray-700" />
+            <ChevronLeft className="h-6 w-6 text-white" />
           </button>
           
           <button 
             onClick={nextCase}
-            className="absolute top-1/2 -right-4 md:-right-10 -translate-y-1/2 z-10 p-2 rounded-full bg-white shadow-lg hover:bg-gray-100 transition-all"
+            className="absolute top-1/2 -right-4 md:-right-10 -translate-y-1/2 z-10 p-2 rounded-full glass hover:neon-border transition-all"
             aria-label="Next case study"
           >
-            <ChevronRight className="h-6 w-6 text-gray-700" />
+            <ChevronRight className="h-6 w-6 text-white" />
           </button>
           
           {/* Case Study Card */}
-          <Card className="bg-white overflow-hidden rounded-lg shadow-xl transition-all duration-500">
-            <div className="grid md:grid-cols-2 gap-6">
+          <div className="glass-card overflow-hidden rounded-xl shadow-2xl transition-all duration-500 border border-blue-500/20">
+            <div className="grid md:grid-cols-2 gap-0">
               {/* Image Side */}
               <div className="relative h-64 md:h-auto overflow-hidden">
                 <img 
                   src={currentCase.image} 
                   alt={currentCase.title} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent h-20"></div>
-                <div className="absolute bottom-4 left-4">
-                  <span className="px-2 py-1 bg-blue-600 text-white text-xs rounded-full">Case Study {activeIndex + 1}/{caseStudies.length}</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="mb-2">
+                    <span className="px-3 py-1 glass text-xs rounded-full font-medium text-blue-400 border border-blue-500/20">Case Study {activeIndex + 1}/{caseStudies.length}</span>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-2 text-white">{currentCase.title}</h3>
                 </div>
               </div>
               
               {/* Content Side */}
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">{currentCase.title}</h3>
-                
+              <div className="p-6 bg-black/40 backdrop-blur-lg border-l border-blue-500/10">
                 <div className="space-y-4 text-sm">
                   <div>
-                    <h4 className="text-blue-700 font-semibold">Business Challenge</h4>
-                    <p className="text-gray-700">{currentCase.challenge}</p>
+                    <h4 className="text-blue-400 font-semibold flex items-center">
+                      <span className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">1</span>
+                      Business Challenge
+                    </h4>
+                    <p className="text-gray-300 ml-7">{currentCase.challenge}</p>
                   </div>
                   
                   <div>
-                    <h4 className="text-blue-700 font-semibold">Strategic Approach</h4>
-                    <p className="text-gray-700">{currentCase.approach}</p>
+                    <h4 className="text-blue-400 font-semibold flex items-center">
+                      <span className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">2</span>
+                      Strategic Approach
+                    </h4>
+                    <p className="text-gray-300 ml-7">{currentCase.approach}</p>
                   </div>
                   
                   <div>
-                    <h4 className="text-blue-700 font-semibold">Design Process</h4>
-                    <p className="text-gray-700">{currentCase.process}</p>
+                    <h4 className="text-blue-400 font-semibold flex items-center">
+                      <span className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">3</span>
+                      Design Process
+                    </h4>
+                    <p className="text-gray-300 ml-7">{currentCase.process}</p>
                   </div>
                   
                   <div>
-                    <h4 className="text-blue-700 font-semibold">Solution</h4>
-                    <p className="text-gray-700">{currentCase.solution}</p>
+                    <h4 className="text-blue-400 font-semibold flex items-center">
+                      <span className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">4</span>
+                      Solution
+                    </h4>
+                    <p className="text-gray-300 ml-7">{currentCase.solution}</p>
                   </div>
                   
                   <div>
-                    <h4 className="text-blue-700 font-semibold">Business Impact</h4>
-                    <ul className="list-disc pl-5 space-y-1">
+                    <h4 className="text-blue-400 font-semibold flex items-center">
+                      <span className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">5</span>
+                      Business Impact
+                    </h4>
+                    <ul className="grid grid-cols-2 gap-2 mt-2 ml-7">
                       {currentCase.impact.map((item, index) => (
-                        <li key={index} className="text-gray-700 font-medium">{item}</li>
+                        <li key={index} className="text-gray-300 text-xs bg-blue-900/20 p-2 rounded-lg border border-blue-500/10 backdrop-blur-md">
+                          {item}
+                        </li>
                       ))}
                     </ul>
                   </div>
                   
-                  <div>
-                    <h4 className="text-blue-700 font-semibold">Tools & Methods</h4>
-                    <p className="text-gray-700">{currentCase.tools}</p>
+                  <div className="pt-2">
+                    <h4 className="text-blue-400 font-semibold">Tools & Methods</h4>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {currentCase.tools.split(', ').map((tool, index) => (
+                        <span key={index} className="text-xs px-3 py-1 glass rounded-full text-gray-300">
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
                 
                 <div className="mt-6 flex space-x-4">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                  <Button className="glass neon-border bg-blue-600/10 hover:bg-blue-600/20 text-white">
                     <ExternalLink className="mr-2 h-4 w-4" /> 
                     View Detailed Case Study
                   </Button>
-                  <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                  <Button variant="outline" className="glass border-blue-500/20 text-blue-400 hover:bg-blue-900/20">
                     <FileText className="mr-2 h-4 w-4" />
                     Download PDF
                   </Button>
                 </div>
               </div>
             </div>
-          </Card>
+          </div>
           
           {/* Pagination Dots */}
           <div className="flex justify-center mt-6 space-x-2">
@@ -172,10 +195,10 @@ const CaseStudySection = () => {
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
+                className={`w-10 h-1 transition-all ${
                   index === activeIndex 
-                    ? 'bg-blue-600' 
-                    : 'bg-gray-300'
+                    ? 'bg-blue-500 w-14' 
+                    : 'bg-gray-700'
                 }`}
                 aria-label={`Go to case study ${index + 1}`}
               />
