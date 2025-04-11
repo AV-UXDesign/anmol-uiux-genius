@@ -20,21 +20,26 @@ const DesignProcessSection = () => {
       
       const sectionPosition = sectionEl.getBoundingClientRect().top + window.scrollY;
       const offset = scrollPosition - sectionPosition;
+      const viewportHeight = window.innerHeight;
       
-      if (offset > -800 && offset < 600) {
+      // Improved parallax calculations to prevent content cutting
+      if (offset > -viewportHeight && offset < sectionEl.offsetHeight + viewportHeight) {
         const elements = sectionEl.querySelectorAll('.process-card');
         elements.forEach((el, index) => {
           const delay = index * 0.15;
-          const translateY = Math.min(100, Math.max(-100, offset * 0.2));
-          el.setAttribute('style', `transform: translateY(${translateY * (0.5 - index * 0.1)}px); 
-                                   opacity: ${Math.min(1, Math.max(0.3, 1 - Math.abs(offset) * 0.001))};
+          // More subtle parallax effect to prevent content cutting
+          const translateY = Math.min(50, Math.max(-50, offset * 0.1));
+          const scale = Math.min(1.02, Math.max(0.98, 1 + offset * 0.0001));
+          
+          el.setAttribute('style', `transform: translateY(${translateY * (0.3 - index * 0.05)}px) scale(${scale}); 
+                                   opacity: ${Math.min(1, Math.max(0.5, 1 - Math.abs(offset) * 0.0005))};
                                    transition-delay: ${delay}s`);
         });
         
-        // Apply parallax to floating elements
+        // Apply improved parallax to floating elements - more subtle to avoid cutting
         const floating = sectionEl.querySelectorAll('.floating-element');
         floating.forEach((el, index) => {
-          const speed = 0.05 + (index % 3) * 0.02;
+          const speed = 0.02 + (index % 3) * 0.01;
           const direction = index % 2 === 0 ? 1 : -1;
           el.setAttribute('style', `transform: translateY(${direction * scrollPosition * speed}px)`);
         });
@@ -121,19 +126,19 @@ const DesignProcessSection = () => {
 
   return (
     <section ref={sectionRef} className="relative py-24 overflow-hidden bg-black min-h-screen z-10">
-      {/* Floating Code Background */}
+      {/* Floating Code Background with improved visibility */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Code lines background */}
         {codeLines.map((line, i) => (
           <div 
             key={i} 
-            className="code-line font-mono text-xs opacity-20 whitespace-nowrap overflow-hidden"
+            className="code-line font-mono text-xs whitespace-nowrap overflow-hidden"
             style={{ 
               top: `${(i * 7) + 5}%`, 
               left: i % 2 === 0 ? '5%' : '15%',
               color: i % 3 === 0 ? '#60A5FA' : i % 3 === 1 ? '#34D399' : '#F472B6',
               transform: `rotate(${i % 2 === 0 ? '0.5' : '-0.5'}deg)`,
-              opacity: 0.15,
+              opacity: 0.2,
               textShadow: i % 3 === 0 ? '0 0 5px rgba(96, 165, 250, 0.5)' : 
                           i % 3 === 1 ? '0 0 5px rgba(52, 211, 153, 0.5)' : 
                           '0 0 5px rgba(244, 114, 182, 0.5)'
@@ -144,11 +149,11 @@ const DesignProcessSection = () => {
         ))}
       </div>
       
-      {/* Floating elements with parallax effect */}
+      {/* Floating elements with parallax effect - improved positioning */}
       {floatingElements.map((el, index) => (
         <div 
           key={index}
-          className={`floating-element absolute opacity-20 z-10`}
+          className={`floating-element absolute opacity-30 z-10`}
           style={{
             top: el.top,
             left: el.left,
@@ -160,44 +165,44 @@ const DesignProcessSection = () => {
         </div>
       ))}
       
-      {/* Glowing orbs with parallax effect */}
+      {/* Enhanced Glowing orbs with parallax effect - more subtle */}
       <div 
         className="absolute top-20 left-20 w-60 h-60 rounded-full filter blur-3xl floating-element"
         style={{ 
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 70%, rgba(0,0,0,0) 100%)',
-          transform: `translateY(${scrollY * -0.05}px)` 
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.05) 70%, rgba(0,0,0,0) 100%)',
+          transform: `translateY(${scrollY * -0.03}px)` 
         }}
       ></div>
       <div 
         className="absolute bottom-40 right-20 w-80 h-80 rounded-full filter blur-3xl floating-element"
         style={{ 
-          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0.05) 70%, rgba(0,0,0,0) 100%)',
-          transform: `translateY(${scrollY * 0.08}px)` 
+          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0.05) 70%, rgba(0,0,0,0) 100%)',
+          transform: `translateY(${scrollY * 0.04}px)` 
         }}
       ></div>
       <div 
         className="absolute top-1/2 left-1/3 w-40 h-40 rounded-full filter blur-3xl floating-element"
         style={{ 
-          background: 'radial-gradient(circle, rgba(244, 114, 182, 0.15) 0%, rgba(244, 114, 182, 0.05) 70%, rgba(0,0,0,0) 100%)',
-          transform: `translateY(${scrollY * -0.03}px)` 
+          background: 'radial-gradient(circle, rgba(244, 114, 182, 0.2) 0%, rgba(244, 114, 182, 0.05) 70%, rgba(0,0,0,0) 100%)',
+          transform: `translateY(${scrollY * -0.02}px)` 
         }}
       ></div>
       
-      {/* Grid pattern with depth */}
+      {/* Enhanced Grid pattern with depth */}
       <div 
         className="absolute inset-0 floating-element"
         style={{
-          backgroundImage: `radial-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px)`,
           backgroundSize: '30px 30px',
-          transform: `translateY(${scrollY * 0.02}px)`,
-          opacity: 0.1
+          transform: `translateY(${scrollY * 0.01}px)`,
+          opacity: 0.2
         }}
       ></div>
       
       <div className="relative z-20 max-w-7xl mx-auto px-4">
         <div 
           className="text-center mb-16 relative" 
-          style={{ transform: `translateY(${scrollY * -0.1}px)` }}
+          style={{ transform: `translateY(${scrollY * -0.05}px)` }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 neon-text-blue animate-fade-in">
             My Design Process
@@ -212,16 +217,21 @@ const DesignProcessSection = () => {
           {processSteps.map((step, index) => (
             <div 
               key={index} 
-              className="process-card glass neon-border rounded-2xl p-6 border border-blue-500/30 shadow-[0_0_25px_rgba(59,130,246,0.15)] hover:border-blue-500/60 transition-all duration-500 transform relative z-20 backdrop-blur-xl"
+              className="process-card glass-enhanced rounded-2xl p-6 border border-blue-500/30 shadow-[0_0_25px_rgba(59,130,246,0.15)] hover:border-blue-500/60 transition-all duration-500 transform relative z-20"
               style={{ 
                 transitionDelay: `${index * 100}ms`,
                 animationDelay: `${index * 150}ms`,
-                backgroundColor: 'rgba(0, 0, 0, 0.7)'
+                background: 'rgba(0, 0, 0, 0.5)',
+                backdropFilter: 'blur(16px)',
+                boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
               }}
             >
               <div className="absolute -right-2 -top-2 opacity-20">
                 {step.devIcon}
               </div>
+              
+              {/* Enhanced glass effect overlay */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></div>
               
               <div className="absolute bottom-0 right-0 w-full h-1/2 overflow-hidden rounded-b-2xl" style={{ zIndex: -1 }}>
                 <div className="absolute inset-0 opacity-20 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent"></div>
@@ -237,7 +247,7 @@ const DesignProcessSection = () => {
                 </div>
               </div>
               
-              <p className="text-gray-300 mb-4 text-sm backdrop-blur-sm">
+              <p className="text-gray-300 mb-4 text-sm backdrop-blur-sm relative z-10">
                 {step.description}
               </p>
               
@@ -271,17 +281,20 @@ const DesignProcessSection = () => {
           ))}
         </div>
         
-        {/* Terminal-like element with parallax effect */}
+        {/* Enhanced Terminal-like element with parallax effect */}
         <div 
-          className="mt-20 max-w-2xl mx-auto glass rounded-xl border border-blue-500/30 relative transform"
+          className="mt-20 max-w-2xl mx-auto rounded-xl border border-blue-500/30 relative transform overflow-hidden"
           style={{ 
-            background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 30, 0.9) 100%)',
+            background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(10, 10, 30, 0.6) 100%)',
             boxShadow: '0 0 30px rgba(59, 130, 246, 0.15), inset 0 0 20px rgba(0, 0, 0, 0.3)',
-            transform: `translateY(${scrollY * 0.05}px)`,
+            transform: `translateY(${scrollY * 0.03}px)`,
             backdropFilter: 'blur(16px)'
           }}
         >
-          <div className="p-6">
+          {/* Enhanced glass effect overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></div>
+          
+          <div className="p-6 relative z-10">
             <div className="flex items-center mb-4">
               <div className="flex space-x-2">
                 <div className="w-3 h-3 rounded-full bg-red-500/90"></div>
@@ -310,9 +323,9 @@ const DesignProcessSection = () => {
             </div>
           </div>
           
-          {/* Reflection effect at the bottom */}
+          {/* Enhanced Reflection effect at the bottom */}
           <div className="h-8 w-full absolute -bottom-8 left-0 right-0" style={{
-            background: 'linear-gradient(to bottom, rgba(59, 130, 246, 0.1), transparent)',
+            background: 'linear-gradient(to bottom, rgba(59, 130, 246, 0.2), transparent)',
             filter: 'blur(4px)',
             transform: 'scaleY(-1)'
           }}></div>

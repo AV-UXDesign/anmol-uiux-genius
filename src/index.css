@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,10 +98,18 @@
     @apply transition-all duration-300 hover:shadow-lg;
   }
 
-  /* Glassmorphism Styles - Enhanced for pure black theme */
+  /* Enhanced Glassmorphism Styles for black theme */
   .glass {
     @apply bg-black/70 backdrop-blur-xl border border-white/10 rounded-2xl;
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .glass-enhanced {
+    @apply backdrop-blur-xl border border-white/10 rounded-2xl;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
   
   .glass-card {
@@ -136,6 +145,14 @@
     @apply absolute font-mono opacity-30;
     font-size: 0.7rem;
     letter-spacing: -0.5px;
+  }
+  
+  /* Terminal-style code blocks */
+  .terminal {
+    @apply font-mono text-sm rounded-lg p-4 overflow-hidden;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(10, 10, 30, 0.8) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15), inset 0 0 20px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -187,20 +204,20 @@
     to { transform: scale(1); opacity: 1; }
   }
   
-  /* Parallax effects */
+  /* Parallax effects - improved to prevent content cutting */
   .parallax-slow {
     @apply transition-transform duration-1000;
-    transform: translateY(var(--scroll-y, 0));
+    transform: translateY(calc(var(--scroll-y, 0) * 0.05));
   }
   
   .parallax-medium {
     @apply transition-transform duration-700;
-    transform: translateY(calc(var(--scroll-y, 0) * 0.7));
+    transform: translateY(calc(var(--scroll-y, 0) * 0.03));
   }
   
   .parallax-fast {
     @apply transition-transform duration-500;
-    transform: translateY(calc(var(--scroll-y, 0) * 0.4));
+    transform: translateY(calc(var(--scroll-y, 0) * 0.02));
   }
   
   /* Floating animation */
@@ -212,5 +229,28 @@
   
   .animate-floating {
     animation: floating 6s ease-in-out infinite;
+  }
+  
+  /* Glass reflections */
+  .glass-reflection {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .glass-reflection::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 100%
+    );
+    transform: rotate(30deg);
+    pointer-events: none;
   }
 }
