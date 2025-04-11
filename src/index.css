@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -78,7 +79,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
-    background-color: #000;
+    background-color: #0a0a18;
     color: #fff;
   }
 }
@@ -97,21 +98,21 @@
     @apply transition-all duration-300 hover:shadow-lg;
   }
 
-  /* Enhanced Glassmorphism Styles for black theme */
+  /* Enhanced Glassmorphism Styles for dark theme */
   .glass {
     @apply bg-black/70 backdrop-blur-xl border border-white/10 rounded-2xl;
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
   }
   
   .glass-enhanced {
-    @apply backdrop-blur-xl border border-white/10 rounded-2xl;
-    background: rgba(5, 5, 15, 0.7);
+    @apply backdrop-blur-xl border border-indigo-500/10 rounded-2xl;
+    background: rgba(11, 10, 25, 0.7);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     -webkit-backdrop-filter: blur(16px);
   }
   
   .glass-card {
-    @apply bg-black/60 backdrop-blur-xl border border-gray-800/50 rounded-2xl shadow-xl;
+    @apply bg-[#0a0a18]/80 backdrop-blur-xl border border-indigo-500/20 rounded-2xl shadow-xl;
   }
   
   /* Apple-inspired neon effects */
@@ -120,23 +121,28 @@
     text-shadow: 0 0 10px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.4);
   }
   
+  .neon-text-indigo {
+    @apply text-indigo-400;
+    text-shadow: 0 0 10px rgba(99, 102, 241, 0.8), 0 0 20px rgba(99, 102, 241, 0.4);
+  }
+  
   .neon-border {
-    @apply border border-blue-500/50;
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3), inset 0 0 5px rgba(59, 130, 246, 0.2);
+    @apply border border-indigo-500/50;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.3), inset 0 0 5px rgba(99, 102, 241, 0.2);
   }
   
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white;
+    @apply bg-indigo-600 hover:bg-indigo-700 text-white;
   }
   
   .btn-outline {
-    @apply border border-blue-600 text-blue-600 hover:bg-blue-50;
+    @apply border border-indigo-600 text-indigo-600 hover:bg-indigo-50;
   }
   
   /* Background gradients */
-  .bg-neon-blue {
-    @apply bg-blue-500;
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
+  .bg-neon-indigo {
+    @apply bg-indigo-500;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.7);
   }
   
   .code-line {
@@ -148,9 +154,9 @@
   /* Terminal-style code blocks */
   .terminal {
     @apply font-mono text-sm rounded-lg p-4 overflow-hidden;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(10, 10, 30, 0.8) 100%);
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15), inset 0 0 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(180deg, rgba(10, 10, 25, 0.9) 0%, rgba(15, 15, 40, 0.8) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.15), inset 0 0 20px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -250,5 +256,18 @@
     );
     transform: rotate(30deg);
     pointer-events: none;
+  }
+
+  /* Micro-interactions */
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+  
+  .hover-glow:hover {
+    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.6));
+  }
+  
+  .text-gradient-indigo {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400;
   }
 }
