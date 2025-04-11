@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -237,7 +238,7 @@ const ToolBeltSection = () => {
             <p className="text-gray-300 ml-4">{'{'} id: 'typescript', name: 'TypeScript', category: 'development', description: 'Strongly-typed JS development', proficiency: 90 {'}'},</p>
             <p className="text-blue-300 ml-2">];</p>
             <p className="text-gray-300 ml-2"></p>
-            <p className="text-blue-300 ml-2">getTools(category?: string): Observable{'{"<Tool[]>"}'} {'{'}</p>
+            <p className="text-blue-300 ml-2">getTools(category?: string): Observable{'{"<Tool[]>"'} {'{'}</p>
             <p className="text-blue-300 ml-4">return of(this.tools)</p>
             <p className="text-blue-300 ml-6">.pipe(</p>
             <p className="text-blue-300 ml-8">delay(500),</p>
