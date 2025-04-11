@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -19,9 +18,7 @@ interface Tool {
 const ToolBeltSection = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'design' | 'development' | 'prototyping'>('all');
   
-  // Professional tools with added descriptions
   const tools: Tool[] = [
-    // Design Tools
     { 
       name: 'Figma', 
       icon: <Figma />, 
@@ -51,7 +48,6 @@ const ToolBeltSection = () => {
       proficiency: 80
     },
     
-    // Development Tools
     { 
       name: 'Angular', 
       icon: <Globe />, 
@@ -81,7 +77,6 @@ const ToolBeltSection = () => {
       proficiency: 85
     },
     
-    // Prototyping & Testing
     { 
       name: 'Axure RP', 
       icon: <PackageCheck />, 
@@ -116,7 +111,6 @@ const ToolBeltSection = () => {
     ? tools 
     : tools.filter(tool => tool.category === activeCategory);
     
-  // Group tools by category
   const toolsByCategory = {
     design: tools.filter(tool => tool.category === 'design'),
     development: tools.filter(tool => tool.category === 'development'),
@@ -135,7 +129,6 @@ const ToolBeltSection = () => {
           </p>
         </div>
         
-        {/* Category Filter */}
         <div className="flex justify-center mb-12">
           <ToggleGroup type="single" value={activeCategory} onValueChange={(value) => value && setActiveCategory(value as any)}>
             <ToggleGroupItem value="all" className="px-6 py-2 glass">
@@ -155,7 +148,6 @@ const ToolBeltSection = () => {
         
         {activeCategory === 'all' ? (
           <div className="space-y-16">
-            {/* Design Tools Section */}
             <div>
               <div className="mb-6 flex items-center">
                 <div className="w-10 h-10 rounded-full glass flex items-center justify-center mr-3">
@@ -171,7 +163,6 @@ const ToolBeltSection = () => {
               </div>
             </div>
             
-            {/* Development Tools Section */}
             <div>
               <div className="mb-6 flex items-center">
                 <div className="w-10 h-10 rounded-full glass flex items-center justify-center mr-3">
@@ -187,7 +178,6 @@ const ToolBeltSection = () => {
               </div>
             </div>
             
-            {/* Prototyping Tools Section */}
             <div>
               <div className="mb-6 flex items-center">
                 <div className="w-10 h-10 rounded-full glass flex items-center justify-center mr-3">
@@ -211,7 +201,6 @@ const ToolBeltSection = () => {
           </div>
         )}
         
-        {/* Code Terminal Section */}
         <div className="mt-20 terminal overflow-hidden rounded-xl glass-card border border-blue-500/20 shadow-xl mx-auto max-w-4xl">
           <div className="flex items-center px-4 py-2 bg-blue-900/20 border-b border-blue-500/20">
             <div className="flex space-x-2 mr-4">
@@ -248,7 +237,7 @@ const ToolBeltSection = () => {
             <p className="text-gray-300 ml-4">{'{'} id: 'typescript', name: 'TypeScript', category: 'development', description: 'Strongly-typed JS development', proficiency: 90 {'}'},</p>
             <p className="text-blue-300 ml-2">];</p>
             <p className="text-gray-300 ml-2"></p>
-            <p className="text-blue-300 ml-2">getTools(category?: string): Observable{'<Tool[]>'} {'{'}</p>
+            <p className="text-blue-300 ml-2">getTools(category?: string): Observable{"{<Tool[]>}"} {'{'}</p>
             <p className="text-blue-300 ml-4">return of(this.tools)</p>
             <p className="text-blue-300 ml-6">.pipe(</p>
             <p className="text-blue-300 ml-8">delay(500),</p>
@@ -263,7 +252,6 @@ const ToolBeltSection = () => {
   );
 };
 
-// Tool Card Component with 3D effect
 const ToolCard = ({ tool }: { tool: Tool }) => {
   return (
     <motion.div 
@@ -272,19 +260,15 @@ const ToolCard = ({ tool }: { tool: Tool }) => {
       transition={{ duration: 0.3 }}
     >
       <div className="glass-card relative p-6 rounded-xl border border-blue-500/20 transform transition-transform duration-500 group-hover:transform-style-3d group-hover:rotate-y-10 group-hover:rotate-x-10 h-full">
-        {/* Color gradient effect on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 rounded-xl transition-all duration-500"></div>
         
-        {/* Icon Container */}
         <div className="w-12 h-12 rounded-lg flex items-center justify-center glass mb-4 text-blue-400 group-hover:text-blue-300 transition-all duration-300">
           {tool.icon}
         </div>
         
-        {/* Content */}
         <h3 className="text-xl font-bold text-white mb-2">{tool.name}</h3>
         <p className="text-sm text-gray-400 mb-4">{tool.description}</p>
         
-        {/* Proficiency bar */}
         <div className="mt-auto">
           <div className="flex justify-between text-xs mb-1">
             <span className="text-gray-400">Proficiency</span>
