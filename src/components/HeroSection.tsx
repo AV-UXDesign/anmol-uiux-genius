@@ -137,9 +137,9 @@ const HeroSection = () => {
           </Button>
         </motion.div>
         
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Repositioned lower */}
         <motion.div 
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-white"
+          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white"
           animate={{
             y: [0, 10, 0],
           }}
@@ -149,8 +149,10 @@ const HeroSection = () => {
             repeatType: "loop"
           }}
         >
-          <ChevronDown className="h-8 w-8" />
-          <span className="sr-only">Scroll Down</span>
+          <div className="flex flex-col items-center">
+            <span className="text-sm text-gray-400 mb-2">Scroll Down</span>
+            <ChevronDown className="h-8 w-8" />
+          </div>
         </motion.div>
       </div>
       
