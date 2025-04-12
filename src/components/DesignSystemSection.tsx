@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -133,12 +134,12 @@ const DesignSystemSection = () => {
                   {/* Color Selection */}
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-4 text-gray-300 text-lg">Color Variants</h4>
-                    <ToggleGroup type="single" value={selectedColor} onValueChange={(value) => value && setSelectedColor(value)} className="flex flex-wrap gap-4">
+                    <ToggleGroup type="single" value={selectedColor} onValueChange={(value) => value && setSelectedColor(value)} className="flex flex-wrap gap-4 p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl">
                       {colors.map(color => (
                         <ToggleGroupItem 
                           key={color.name} 
                           value={color.name} 
-                          variant="pillChip" 
+                          variant="neonChip" 
                           className={`w-auto h-auto ${color.textClass}`}
                         >
                           <div className={`w-4 h-4 rounded-full ${color.class} mr-2 inline-block`}></div>
@@ -151,12 +152,12 @@ const DesignSystemSection = () => {
                   {/* Size Selection */}
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-4 text-gray-300 text-lg">Size Variants</h4>
-                    <ToggleGroup type="single" value={selectedSize} onValueChange={(value) => value && setSelectedSize(value)} className="flex flex-wrap gap-4">
+                    <ToggleGroup type="single" value={selectedSize} onValueChange={(value) => value && setSelectedSize(value)} className="flex flex-wrap gap-4 p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl">
                       {sizes.map(size => (
                         <ToggleGroupItem 
                           key={size.name} 
                           value={size.name} 
-                          variant="pillChip"
+                          variant="neonChip"
                         >
                           {size.label}
                         </ToggleGroupItem>
