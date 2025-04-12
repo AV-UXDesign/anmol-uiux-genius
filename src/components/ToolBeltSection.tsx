@@ -180,17 +180,17 @@ const ToolBeltSection = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          <ToggleGroup type="single" value={activeCategory} onValueChange={(value) => value && setActiveCategory(value as any)} className="p-1 bg-indigo-950/30 backdrop-blur-md rounded-full">
-            <ToggleGroupItem value="all" className="px-6 py-2 rounded-full data-[state=on]:bg-indigo-600/50 data-[state=on]:text-white">
+          <ToggleGroup type="single" value={activeCategory} onValueChange={(value) => value && setActiveCategory(value as any)} className="p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl">
+            <ToggleGroupItem value="all" variant="chip" className="relative overflow-hidden">
               All Tools
             </ToggleGroupItem>
-            <ToggleGroupItem value="design" className="px-6 py-2 rounded-full data-[state=on]:bg-indigo-600/50 data-[state=on]:text-white">
+            <ToggleGroupItem value="design" variant="chip" className="relative overflow-hidden">
               Design
             </ToggleGroupItem>
-            <ToggleGroupItem value="development" className="px-6 py-2 rounded-full data-[state=on]:bg-indigo-600/50 data-[state=on]:text-white">
+            <ToggleGroupItem value="development" variant="chip" className="relative overflow-hidden">
               Development
             </ToggleGroupItem>
-            <ToggleGroupItem value="prototyping" className="px-6 py-2 rounded-full data-[state=on]:bg-indigo-600/50 data-[state=on]:text-white">
+            <ToggleGroupItem value="prototyping" variant="chip" className="relative overflow-hidden">
               Prototyping
             </ToggleGroupItem>
           </ToggleGroup>
@@ -241,39 +241,39 @@ const ToolBeltSection = () => {
           </div>
           
           <ScrollArea className="p-6 font-mono text-sm overflow-auto max-h-[320px]">
-            <p className="text-indigo-300">import {'{ Injectable }'} from '@angular/core';</p>
-            <p className="text-indigo-300">import {'{ Observable, of }'} from 'rxjs';</p>
-            <p className="text-indigo-300">import {'{ delay, map }'} from 'rxjs/operators';</p>
+            <p className="text-indigo-300">import {"{Injectable}"} from '@angular/core';</p>
+            <p className="text-indigo-300">import {"{Observable, of}"} from 'rxjs';</p>
+            <p className="text-indigo-300">import {"{delay, map}"} from 'rxjs/operators';</p>
             <p className="text-gray-500">// Interfaces</p>
-            <p className="text-indigo-300">export interface Tool {'{'}</p>
+            <p className="text-indigo-300">export interface Tool {"{"}</p>
             <p className="text-gray-300 ml-2">id: string;</p>
             <p className="text-gray-300 ml-2">name: string;</p>
             <p className="text-gray-300 ml-2">category: 'design' | 'development' | 'prototyping';</p>
             <p className="text-gray-300 ml-2">description: string;</p>
             <p className="text-gray-300 ml-2">proficiency: number;</p>
-            <p className="text-indigo-300">{'}'}</p>
+            <p className="text-indigo-300">{"}"}</p>
             <p className="text-gray-500">// Service</p>
-            <p className="text-indigo-300">@Injectable({'{'}</p>
+            <p className="text-indigo-300">@Injectable({"{"}</p>
             <p className="text-gray-300 ml-2">providedIn: 'root'</p>
-            <p className="text-indigo-300">{'})'}</p>
-            <p className="text-indigo-300">export class ToolkitService {'{'}</p>
+            <p className="text-indigo-300">{"})"}</p>
+            <p className="text-indigo-300">export class ToolkitService {"{"}</p>
             <p className="text-indigo-300 ml-2">private tools: Tool[] = [</p>
             <p className="text-green-300 ml-4">// Design tools</p>
-            <p className="text-gray-300 ml-4">{'{'} id: 'figma', name: 'Figma', category: 'design', description: 'UI/UX design, prototyping, design systems', proficiency: 95 {'}'},</p>
-            <p className="text-gray-300 ml-4">{'{'} id: 'xd', name: 'Adobe XD', category: 'design', description: 'UI design, wireframing, prototyping', proficiency: 90 {'}'},</p>
+            <p className="text-gray-300 ml-4">{"{"} id: 'figma', name: 'Figma', category: 'design', description: 'UI/UX design, prototyping, design systems', proficiency: 95 {"}"},</p>
+            <p className="text-gray-300 ml-4">{"{"} id: 'xd', name: 'Adobe XD', category: 'design', description: 'UI design, wireframing, prototyping', proficiency: 90 {"}"},</p>
             <p className="text-green-300 ml-4">// Development tools</p>
-            <p className="text-gray-300 ml-4">{'{'} id: 'angular', name: 'Angular', category: 'development', description: 'Enterprise frontend framework', proficiency: 95 {'}'},</p>
-            <p className="text-gray-300 ml-4">{'{'} id: 'typescript', name: 'TypeScript', category: 'development', description: 'Strongly-typed JS development', proficiency: 90 {'}'},</p>
+            <p className="text-gray-300 ml-4">{"{"} id: 'angular', name: 'Angular', category: 'development', description: 'Enterprise frontend framework', proficiency: 95 {"}"},</p>
+            <p className="text-gray-300 ml-4">{"{"} id: 'typescript', name: 'TypeScript', category: 'development', description: 'Strongly-typed JS development', proficiency: 90 {"}"},</p>
             <p className="text-indigo-300 ml-2">];</p>
             <p className="text-gray-300 ml-2"></p>
-            <p className="text-indigo-300 ml-2">getTools(category?: string): Observable{'<'}Tool[]{'>'} {'{'}</p>
+            <p className="text-indigo-300 ml-2">getTools(category?: string): Observable{"<"}Tool[]{">"} {"{"}</p>
             <p className="text-indigo-300 ml-4">return of(this.tools)</p>
             <p className="text-indigo-300 ml-6">.pipe(</p>
             <p className="text-indigo-300 ml-8">delay(500),</p>
             <p className="text-indigo-300 ml-8">map(tools => category ? tools.filter(t => t.category === category) : tools)</p>
             <p className="text-indigo-300 ml-6">);</p>
-            <p className="text-indigo-300 ml-2">{'}'}</p>
-            <p className="text-indigo-300">{'}'}</p>
+            <p className="text-indigo-300 ml-2">{"}"}</p>
+            <p className="text-indigo-300">{"}"}</p>
           </ScrollArea>
         </motion.div>
       </div>

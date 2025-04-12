@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { motion } from 'framer-motion';
 import { Code, Brush, Layout, Palette, Type, Layers, Box } from 'lucide-react';
 
@@ -83,7 +83,7 @@ const DesignSystemSection = () => {
             <div className="w-14 h-14 flex items-center justify-center rounded-full bg-indigo-500/10 border border-indigo-500/20 mr-4">
               <Palette className="h-6 w-6 text-indigo-400" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold neon-text-indigo">
+            <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
               Design System
             </h2>
           </div>
@@ -93,7 +93,7 @@ const DesignSystemSection = () => {
         </motion.div>
         
         <Tabs defaultValue="buttons" className="w-full">
-          <TabsList className="mx-auto flex justify-center mb-8 backdrop-blur-xl bg-black/40 border border-indigo-500/20 rounded-full overflow-hidden p-1">
+          <TabsList className="mx-auto flex justify-center mb-8 backdrop-blur-xl bg-black/40 border border-indigo-500/20 rounded-full overflow-hidden p-1 shadow-xl">
             <TabsTrigger value="buttons" className="rounded-full px-6 data-[state=active]:bg-indigo-500/20 data-[state=active]:text-indigo-400">
               <Box className="w-4 h-4 mr-2" />
               Buttons
@@ -123,8 +123,8 @@ const DesignSystemSection = () => {
                 viewport={{ once: true }}
               >
                 <motion.div variants={item}>
-                  <h3 className="text-2xl font-bold mb-8 neon-text-indigo flex items-center">
-                    <Box className="h-5 w-5 mr-2" />
+                  <h3 className="text-2xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 flex items-center">
+                    <Box className="h-5 w-5 mr-2 text-indigo-400" />
                     Button Components
                   </h3>
                 </motion.div>
@@ -133,36 +133,35 @@ const DesignSystemSection = () => {
                   {/* Color Selection */}
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-4 text-gray-300 text-lg">Color Variants</h4>
-                    <div className="flex flex-wrap gap-4">
+                    <ToggleGroup type="single" value={selectedColor} onValueChange={(value) => value && setSelectedColor(value)} className="flex flex-wrap gap-4">
                       {colors.map(color => (
-                        <button
-                          key={color.name}
-                          className={`w-16 h-16 rounded-full ${color.class} ${
-                            selectedColor === color.name ? 'ring-2 ring-white/50 shadow-lg scale-110' : 'opacity-80'
-                          } transition-all duration-300 hover:scale-110 transform-gpu`}
-                          onClick={() => setSelectedColor(color.name)}
-                          aria-label={`Select ${color.name} color`}
-                        />
+                        <ToggleGroupItem 
+                          key={color.name} 
+                          value={color.name} 
+                          variant="pillChip" 
+                          className={`w-auto h-auto ${color.textClass}`}
+                        >
+                          <div className={`w-4 h-4 rounded-full ${color.class} mr-2 inline-block`}></div>
+                          {color.name.charAt(0).toUpperCase() + color.name.slice(1)}
+                        </ToggleGroupItem>
                       ))}
-                    </div>
+                    </ToggleGroup>
                   </motion.div>
                   
                   {/* Size Selection */}
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-4 text-gray-300 text-lg">Size Variants</h4>
-                    <div className="flex flex-wrap gap-4">
+                    <ToggleGroup type="single" value={selectedSize} onValueChange={(value) => value && setSelectedSize(value)} className="flex flex-wrap gap-4">
                       {sizes.map(size => (
-                        <button
-                          key={size.name}
-                          className={`backdrop-blur-xl px-6 py-3 rounded-md border transform-gpu ${
-                            selectedSize === size.name ? 'border-indigo-500/50 text-indigo-400 bg-indigo-500/10' : 'border-gray-800 text-gray-400 bg-black/60'
-                          } transition-all duration-300 hover:border-indigo-500/30 hover:text-indigo-400`}
-                          onClick={() => setSelectedSize(size.name)}
+                        <ToggleGroupItem 
+                          key={size.name} 
+                          value={size.name} 
+                          variant="pillChip"
                         >
                           {size.label}
-                        </button>
+                        </ToggleGroupItem>
                       ))}
-                    </div>
+                    </ToggleGroup>
                   </motion.div>
                   
                   {/* Button Preview */}
@@ -549,4 +548,3 @@ const DesignSystemSection = () => {
 };
 
 export default DesignSystemSection;
-
