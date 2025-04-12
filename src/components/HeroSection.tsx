@@ -136,25 +136,25 @@ const HeroSection = () => {
             </span>
           </Button>
         </motion.div>
-        
-        {/* Scroll Indicator - Repositioned lower */}
-        <motion.div 
-          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white"
-          animate={{
-            y: [0, 10, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            repeatType: "loop"
-          }}
-        >
-          <div className="flex flex-col items-center">
-            <span className="text-sm text-gray-400 mb-2">Scroll Down</span>
-            <ChevronDown className="h-8 w-8" />
-          </div>
-        </motion.div>
       </div>
+      
+      {/* Enhanced Scroll Indicator - Now with proper spacing and styling */}
+      <motion.div 
+        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-white"
+        animate={{
+          y: [0, 10, 0],
+        }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          repeatType: "loop"
+        }}
+      >
+        <div className="flex flex-col items-center glass-enhanced px-5 py-3 rounded-full border border-indigo-500/20">
+          <span className="text-sm text-gray-300 mb-1">Scroll Down</span>
+          <ChevronDown className="h-5 w-5 text-indigo-400" />
+        </div>
+      </motion.div>
       
       {/* Glassmorphism Overlay at Bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a18] to-transparent"></div>

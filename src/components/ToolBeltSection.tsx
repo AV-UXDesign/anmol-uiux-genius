@@ -241,9 +241,9 @@ const ToolBeltSection = () => {
           </div>
           
           <ScrollArea className="p-6 font-mono text-sm overflow-auto max-h-[320px]">
-            <p className="text-indigo-300">import {"{Injectable}"} from '@angular/core';</p>
-            <p className="text-indigo-300">import {"{Observable, of}"} from 'rxjs';</p>
-            <p className="text-indigo-300">import {"{delay, map}"} from 'rxjs/operators';</p>
+            <p className="text-indigo-300">import {"{"} Injectable {"}"} from '@angular/core';</p>
+            <p className="text-indigo-300">import {"{"} Observable, of {"}"} from 'rxjs';</p>
+            <p className="text-indigo-300">import {"{"} delay, map {"}"} from 'rxjs/operators';</p>
             <p className="text-gray-500">// Interfaces</p>
             <p className="text-indigo-300">export interface Tool {"{"}</p>
             <p className="text-gray-300 ml-2">id: string;</p>
