@@ -327,7 +327,7 @@ const CaseStudySection = () => {
                       Full Case Study
                     </Button>
                   </SheetTrigger>
-                  <SheetContent className="glass-enhanced overflow-y-auto w-full sm:max-w-none md:max-w-xl">
+                  <SheetContent className="glass-enhanced bg-black/40 backdrop-blur-lg overflow-y-auto w-full sm:max-w-none md:max-w-xl">
                     <div className="space-y-6 py-6">
                       <div className="flex items-center space-x-3">
                         <div className="w-12 h-12 rounded-full flex items-center justify-center glass">
