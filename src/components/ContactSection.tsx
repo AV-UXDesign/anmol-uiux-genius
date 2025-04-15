@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -125,13 +124,13 @@ const ContactSection = () => {
                   <Button 
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full glass bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/50 text-white hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all duration-300 group"
+                    className="w-full h-14 glass bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/50 text-white hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all duration-300 group"
                   >
                     {isSubmitting ? (
                       "Sending Message..."
                     ) : (
                       <>
-                        Send Message <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                        Send Message <Send className="mr-2 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
                       </>
                     )}
                   </Button>
@@ -214,13 +213,18 @@ const ContactSection = () => {
                   </a>
                 </div>
                 
-                <Button 
-                  onClick={handleResumeDownload}
-                  className="w-full glass bg-gradient-to-r from-indigo-600/30 to-purple-600/30 hover:from-indigo-600/40 hover:to-purple-600/40 text-white border border-indigo-500/30 hover:border-indigo-500/50 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all duration-300 py-6 group"
+                <a
+                  href="/anmol-cv.pdf"
+                  download
+                  className="w-full block"
                 >
-                  <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform duration-300" /> 
-                  Download Resume (PDF)
-                </Button>
+                  <Button 
+                    className="w-full h-14 glass bg-gradient-to-r from-indigo-600/30 to-purple-600/30 hover:from-indigo-600/40 hover:to-purple-600/40 text-white border border-indigo-500/30 hover:border-indigo-500/50 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all duration-300 group"
+                  >
+                    <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform duration-300" /> 
+                    Download Resume (PDF)
+                  </Button>
+                </a>
               </div>
             </Card>
           </motion.div>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -7,10 +6,10 @@ import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { motion } from 'framer-motion';
 import { Code, Brush, Layout, Palette, Type, Layers, Box, Sparkles } from 'lucide-react';
 
-
 const DesignSystemSection = () => {
   const [selectedColor, setSelectedColor] = useState('primary');
   const [selectedSize, setSelectedSize] = useState('md');
+  const [activeTab, setActiveTab] = useState<'buttons' | 'cards' | 'forms' | 'typography'>('buttons');
 
   const colors = [
     { name: 'primary', class: 'bg-indigo-500', textClass: 'text-indigo-400', borderClass: 'border-indigo-500/50' },
@@ -96,8 +95,36 @@ const DesignSystemSection = () => {
           </p>
         </div>
 
-        <Tabs defaultValue="buttons" className="p-1">
-          <TabsList className="mx-auto flex justify-center mb-8 p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl">
+        <motion.div
+          className="flex justify-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true }}
+        >
+          <ToggleGroup
+            type="single"
+            value={activeTab}
+            onValueChange={(value) => value && setActiveTab(value as any)}
+            className="p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl"
+          >
+            <ToggleGroupItem value="buttons" variant="neonChip" className="relative overflow-hidden">
+              Buttons
+            </ToggleGroupItem>
+            <ToggleGroupItem value="cards" variant="neonChip" className="relative overflow-hidden">
+              Cards
+            </ToggleGroupItem>
+            <ToggleGroupItem value="forms" variant="neonChip" className="relative overflow-hidden">
+              Forms
+            </ToggleGroupItem>
+            <ToggleGroupItem value="typography" variant="neonChip" className="relative overflow-hidden">
+              Typography
+            </ToggleGroupItem>
+          </ToggleGroup>
+        </motion.div>
+
+        <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as any)} className="p-1">
+          {/* <TabsList className="mx-auto flex justify-center mb-8 p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl">
             <TabsTrigger value="buttons" className="rounded-full px-6 data-[state=active]:bg-indigo-500/20 data-[state=active]:text-indigo-400">
               <Box className="w-4 h-4 mr-2" />
               Buttons
@@ -114,7 +141,7 @@ const DesignSystemSection = () => {
               <Type className="w-4 h-4 mr-2" />
               Typography
             </TabsTrigger>
-          </TabsList>
+          </TabsList> */}
 
           {/* Buttons */}
           <TabsContent value="buttons" className="animate-fade-in">

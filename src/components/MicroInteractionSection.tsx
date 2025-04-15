@@ -1,6 +1,6 @@
-
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { motion } from 'framer-motion';
 import { Sparkles, MousePointer, Focus, RotateCw, FolderOpen, AlertCircle } from 'lucide-react';
 
@@ -8,6 +8,7 @@ const MicroInteractionSection = () => {
   const [hoverState, setHoverState] = useState(false);
   const [focusState, setFocusState] = useState(false);
   const [loadingState, setLoadingState] = useState(false);
+  const [activeTab, setActiveTab] = useState<'hover' | 'focus' | 'loading' | 'empty'>('hover');
 
   // Toggle loading state
   const toggleLoading = () => {
@@ -67,13 +68,40 @@ const MicroInteractionSection = () => {
             <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full mb-6"></div>
           </motion.div>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Delightful details that enhance user experience through thoughtful animation and feedback.
+            Delightful details that enhance user experience through thoughtful animation and feedbacks.
           </p>
         </div>
 
+        <motion.div
+          className="flex justify-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true }}
+        >
+          <ToggleGroup
+            type="single"
+            value={activeTab}
+            onValueChange={(value) => value && setActiveTab(value as any)}
+            className="p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl"
+          >
+            <ToggleGroupItem value="hover" variant="neonChip" className="relative overflow-hidden">
+              Hover
+            </ToggleGroupItem>
+            <ToggleGroupItem value="focus" variant="neonChip" className="relative overflow-hidden">
+              Focus
+            </ToggleGroupItem>
+            <ToggleGroupItem value="loading" variant="neonChip" className="relative overflow-hidden">
+              Loading
+            </ToggleGroupItem>
+            <ToggleGroupItem value="empty" variant="neonChip" className="relative overflow-hidden">
+              Empty States
+            </ToggleGroupItem>
+          </ToggleGroup>
+        </motion.div>
 
-        <Tabs defaultValue="hover" className="w-full">
-          <TabsList className="mx-auto flex justify-center mb-10 backdrop-blur-xl bg-black/40 border border-indigo-500/20 rounded-full overflow-hidden p-1.5">
+        <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as any)} className="w-full">
+          {/* <TabsList className="mx-auto flex justify-center mb-10 backdrop-blur-xl bg-black/40 border border-indigo-500/20 rounded-full overflow-hidden p-1.5">
             <TabsTrigger value="hover" className="rounded-full px-6 data-[state=active]:bg-indigo-500/20 data-[state=active]:text-indigo-400">
               <MousePointer className="w-4 h-4 mr-2" />
               Hover
@@ -90,7 +118,7 @@ const MicroInteractionSection = () => {
               <FolderOpen className="w-4 h-4 mr-2" />
               Empty States
             </TabsTrigger>
-          </TabsList>
+          </TabsList> */}
 
           {/* Hover States */}
           <TabsContent value="hover" className="animate-fade-in">

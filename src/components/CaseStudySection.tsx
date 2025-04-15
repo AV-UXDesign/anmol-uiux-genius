@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, ExternalLink, FileText, Building, Activity, Brain, Code, ChevronsRight, LucideIcon, Sparkles } from 'lucide-react';
@@ -247,12 +246,12 @@ const CaseStudySection = () => {
 
       <div className="max-w-7xl mx-auto">
         {/* View Mode Toggle */}
-        <div className="flex justify-center mb-10 gap-4">
-          <ToggleGroup type="single" value={viewMode} onValueChange={(value) => value && setViewMode(value as "ux" | "dev")}>
-            <ToggleGroupItem value="ux" className="px-6 py-2 glass">
+        <div className="flex justify-center mb-10 gap-12">
+          <ToggleGroup className="gap-4" type="single" value={viewMode} onValueChange={(value) => value && setViewMode(value as "ux" | "dev")}>
+            <ToggleGroupItem value="ux" className="h-12 px-6 py-3 glass rounded-md text-white font-medium text-sm">
               UX Designer Lens
             </ToggleGroupItem>
-            <ToggleGroupItem value="dev" className="px-6 py-2 glass">
+            <ToggleGroupItem value="dev" className="h-12 px-6 py-3 glass rounded-md text-white font-medium text-sm">
               Angular Dev Lens
             </ToggleGroupItem>
           </ToggleGroup>
