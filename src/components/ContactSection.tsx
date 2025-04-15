@@ -153,35 +153,35 @@ const ContactSection = () => {
                 
                 <div className="space-y-4 mb-8">
                   <a 
-                    href="mailto:contact@yourname.com" 
+                    href="mailto:anmolvishwakarma1105@gmail.com" 
                     className="flex items-center space-x-3 p-3 rounded-md border border-gray-800 hover:border-indigo-500/50 hover:bg-indigo-500/10 transition-all duration-300 group"
                   >
                     <div className="w-10 h-10 rounded-full bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20">
                       <Mail className="h-5 w-5 text-indigo-400" />
                     </div>
                     <div className="flex-1">
-                      <span className="block text-gray-300 group-hover:text-indigo-300 transition-colors">contact@yourname.com</span>
+                      <span className="block text-gray-300 group-hover:text-indigo-300 transition-colors">Anmol Vishawakarma</span>
                       <span className="text-xs text-gray-500">Email me anytime</span>
                     </div>
                     <ChevronRight className="h-4 w-4 text-gray-500 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all duration-300" />
                   </a>
                   
                   <a 
-                    href="tel:+1234567890" 
+                    href="tel:+9321041338" 
                     className="flex items-center space-x-3 p-3 rounded-md border border-gray-800 hover:border-indigo-500/50 hover:bg-indigo-500/10 transition-all duration-300 group"
                   >
                     <div className="w-10 h-10 rounded-full bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20">
                       <Phone className="h-5 w-5 text-indigo-400" />
                     </div>
                     <div className="flex-1">
-                      <span className="block text-gray-300 group-hover:text-indigo-300 transition-colors">+1 (234) 567-890</span>
-                      <span className="text-xs text-gray-500">Monday to Friday, 9AM-5PM</span>
+                      <span className="block text-gray-300 group-hover:text-indigo-300 transition-colors">+91 9321-041-338</span>
+                      <span className="text-xs text-gray-500">Monday to Friday, 9AM-7PM</span>
                     </div>
                     <ChevronRight className="h-4 w-4 text-gray-500 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all duration-300" />
                   </a>
                   
                   <a 
-                    href="https://linkedin.com/in/yourusername" 
+                    href="https://www.linkedin.com/in/anmol-vishwakarma-4ba05b69/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 p-3 rounded-md border border-gray-800 hover:border-indigo-500/50 hover:bg-indigo-500/10 transition-all duration-300 group"
@@ -190,14 +190,14 @@ const ContactSection = () => {
                       <Linkedin className="h-5 w-5 text-indigo-400" />
                     </div>
                     <div className="flex-1">
-                      <span className="block text-gray-300 group-hover:text-indigo-300 transition-colors">linkedin.com/in/yourusername</span>
+                      <span className="block text-gray-300 group-hover:text-indigo-300 transition-colors">linkedin.com/Anmol</span>
                       <span className="text-xs text-gray-500">Connect professionally</span>
                     </div>
                     <ExternalLink className="h-4 w-4 text-gray-500 group-hover:text-indigo-400 transition-colors" />
                   </a>
                   
                   <a 
-                    href="https://github.com/yourusername" 
+                    href="https://github.com/AV-UXDesign/anmol-uiux-genius" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 p-3 rounded-md border border-gray-800 hover:border-indigo-500/50 hover:bg-indigo-500/10 transition-all duration-300 group"
@@ -206,7 +206,8 @@ const ContactSection = () => {
                       <Github className="h-5 w-5 text-indigo-400" />
                     </div>
                     <div className="flex-1">
-                      <span className="block text-gray-300 group-hover:text-indigo-300 transition-colors">github.com/yourusername</span>
+                      <span className="block text-gray-300 group-hover:text-indigo-300 transition-colors">github.com/Anmol
+                      </span>
                       <span className="text-xs text-gray-500">View my open source work</span>
                     </div>
                     <ExternalLink className="h-4 w-4 text-gray-500 group-hover:text-indigo-400 transition-colors" />

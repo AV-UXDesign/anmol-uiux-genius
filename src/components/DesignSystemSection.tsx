@@ -5,12 +5,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { motion } from 'framer-motion';
-import { Code, Brush, Layout, Palette, Type, Layers, Box } from 'lucide-react';
+import { Code, Brush, Layout, Palette, Type, Layers, Box, Sparkles } from 'lucide-react';
+
 
 const DesignSystemSection = () => {
   const [selectedColor, setSelectedColor] = useState('primary');
   const [selectedSize, setSelectedSize] = useState('md');
-  
+
   const colors = [
     { name: 'primary', class: 'bg-indigo-500', textClass: 'text-indigo-400', borderClass: 'border-indigo-500/50' },
     { name: 'success', class: 'bg-emerald-500', textClass: 'text-emerald-400', borderClass: 'border-emerald-500/50' },
@@ -18,7 +19,7 @@ const DesignSystemSection = () => {
     { name: 'danger', class: 'bg-rose-500', textClass: 'text-rose-400', borderClass: 'border-rose-500/50' },
     { name: 'neutral', class: 'bg-slate-500', textClass: 'text-slate-400', borderClass: 'border-slate-500/50' }
   ];
-  
+
   const sizes = [
     { name: 'sm', label: 'Small' },
     { name: 'md', label: 'Medium' },
@@ -29,9 +30,9 @@ const DesignSystemSection = () => {
     const selectedColor = colors.find(c => c.name === color);
     return `${selectedColor.class}/20 hover:${selectedColor.class}/30 ${selectedColor.textClass} ${selectedColor.borderClass}`;
   };
-  
+
   const getButtonSize = (size) => {
-    switch(size) {
+    switch (size) {
       case 'sm': return 'text-xs px-2 py-1';
       case 'md': return 'text-sm px-4 py-2';
       case 'lg': return 'text-base px-6 py-3';
@@ -60,9 +61,9 @@ const DesignSystemSection = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/5 rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-        
+
         {/* Grid pattern */}
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             backgroundImage: `radial-gradient(rgba(99, 102, 241, 0.15) 1px, transparent 1px)`,
@@ -71,30 +72,32 @@ const DesignSystemSection = () => {
           }}
         ></div>
       </div>
-      
+
       <div className="max-w-6xl mx-auto relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <div className="flex items-center justify-center mb-4">
-            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-indigo-500/10 border border-indigo-500/20 mr-4">
-              <Palette className="h-6 w-6 text-indigo-400" />
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-block"
+          >
+            <div className="relative flex items-center justify-center mb-2">
+              <Sparkles className="text-indigo-400 h-6 w-6 absolute -left-8" />
+              <Sparkles className="text-indigo-400 h-6 w-6 absolute -right-8" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
+            <h2 className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
               Design System
             </h2>
-          </div>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full mb-6"></div>
+          </motion.div>
+          <p className="text-gray-400 max-w-2xl mx-auto">
             Consistency at scale with reusable components and design tokens
           </p>
-        </motion.div>
-        
-        <Tabs defaultValue="buttons" className="w-full">
-          <TabsList className="mx-auto flex justify-center mb-8 backdrop-blur-xl bg-black/40 border border-indigo-500/20 rounded-full overflow-hidden p-1 shadow-xl">
+        </div>
+
+        <Tabs defaultValue="buttons" className="p-1">
+          <TabsList className="mx-auto flex justify-center mb-8 p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl">
             <TabsTrigger value="buttons" className="rounded-full px-6 data-[state=active]:bg-indigo-500/20 data-[state=active]:text-indigo-400">
               <Box className="w-4 h-4 mr-2" />
               Buttons
@@ -112,11 +115,11 @@ const DesignSystemSection = () => {
               Typography
             </TabsTrigger>
           </TabsList>
-          
+
           {/* Buttons */}
           <TabsContent value="buttons" className="animate-fade-in">
             <Card className="glass-card border border-indigo-500/20 backdrop-blur-xl bg-black/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-              <motion.div 
+              <motion.div
                 className="p-8"
                 variants={container}
                 initial="hidden"
@@ -129,17 +132,17 @@ const DesignSystemSection = () => {
                     Button Components
                   </h3>
                 </motion.div>
-                
+
                 <div className="space-y-10">
                   {/* Color Selection */}
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-4 text-gray-300 text-lg">Color Variants</h4>
                     <ToggleGroup type="single" value={selectedColor} onValueChange={(value) => value && setSelectedColor(value)} className="flex flex-wrap gap-4 p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl">
                       {colors.map(color => (
-                        <ToggleGroupItem 
-                          key={color.name} 
-                          value={color.name} 
-                          variant="neonChip" 
+                        <ToggleGroupItem
+                          key={color.name}
+                          value={color.name}
+                          variant="neonChip"
                           className={`w-auto h-auto ${color.textClass}`}
                         >
                           <div className={`w-4 h-4 rounded-full ${color.class} mr-2 inline-block`}></div>
@@ -148,15 +151,15 @@ const DesignSystemSection = () => {
                       ))}
                     </ToggleGroup>
                   </motion.div>
-                  
+
                   {/* Size Selection */}
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-4 text-gray-300 text-lg">Size Variants</h4>
                     <ToggleGroup type="single" value={selectedSize} onValueChange={(value) => value && setSelectedSize(value)} className="flex flex-wrap gap-4 p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl">
                       {sizes.map(size => (
-                        <ToggleGroupItem 
-                          key={size.name} 
-                          value={size.name} 
+                        <ToggleGroupItem
+                          key={size.name}
+                          value={size.name}
                           variant="neonChip"
                         >
                           {size.label}
@@ -164,7 +167,7 @@ const DesignSystemSection = () => {
                       ))}
                     </ToggleGroup>
                   </motion.div>
-                  
+
                   {/* Button Preview */}
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-4 text-gray-300 text-lg">Result</h4>
@@ -176,7 +179,7 @@ const DesignSystemSection = () => {
                       </button>
                     </div>
                   </motion.div>
-                  
+
                   {/* Code */}
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-4 text-gray-300 text-lg flex items-center">
@@ -185,7 +188,7 @@ const DesignSystemSection = () => {
                     </h4>
                     <div className="terminal backdrop-blur-xl bg-black/80 p-5 rounded-lg overflow-x-auto text-sm border border-indigo-500/20 shadow-[0_0_15px_rgba(99,102,241,0.1)]">
                       <pre className="text-gray-300 font-mono">
-{`<button
+                        {`<button
   className="rounded-lg backdrop-blur-xl border ${getButtonClass(selectedColor)} ${getButtonSize(selectedSize)} transition-all hover:scale-105"
 >
   Example Button
@@ -197,11 +200,11 @@ const DesignSystemSection = () => {
               </motion.div>
             </Card>
           </TabsContent>
-          
+
           {/* Cards */}
           <TabsContent value="cards" className="animate-fade-in">
             <Card className="glass-card border border-indigo-500/20 backdrop-blur-xl bg-black/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-              <motion.div 
+              <motion.div
                 className="p-8"
                 variants={container}
                 initial="hidden"
@@ -214,7 +217,7 @@ const DesignSystemSection = () => {
                     Card Components
                   </h3>
                 </motion.div>
-                
+
                 <div className="grid md:grid-cols-2 gap-10">
                   {/* Card Types */}
                   <motion.div variants={item}>
@@ -225,7 +228,7 @@ const DesignSystemSection = () => {
                         <h5 className="font-medium mb-2 text-white group-hover:text-indigo-300 transition-colors">Simple Card</h5>
                         <p className="text-sm text-gray-400">Basic container with minimal styling</p>
                       </div>
-                      
+
                       {/* Feature Card */}
                       <div className="backdrop-blur-xl bg-black/60 p-6 rounded-xl border border-indigo-500/30 shadow-[0_0_15px_rgba(99,102,241,0.15)] transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] transform-gpu">
                         <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mb-4 border border-indigo-500/30">
@@ -234,7 +237,7 @@ const DesignSystemSection = () => {
                         <h5 className="font-medium mb-2 text-white">Feature Card</h5>
                         <p className="text-sm text-gray-400">Highlight key features or benefits</p>
                       </div>
-                      
+
                       {/* Profile Card */}
                       <div className="backdrop-blur-xl bg-black/60 p-6 rounded-xl border border-gray-800 transition-all duration-300 hover:border-indigo-500/30 transform-gpu group">
                         <div className="flex items-center space-x-4 mb-4">
@@ -252,7 +255,7 @@ const DesignSystemSection = () => {
                       </div>
                     </div>
                   </motion.div>
-                  
+
                   {/* Card Tokens */}
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-6 text-gray-300 text-lg">Design Tokens</h4>
@@ -278,7 +281,7 @@ const DesignSystemSection = () => {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h5 className="text-sm font-medium mb-3 text-indigo-300">Shadows</h5>
                         <div className="flex space-x-6">
@@ -296,7 +299,7 @@ const DesignSystemSection = () => {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h5 className="text-sm font-medium mb-3 text-indigo-300">Effects</h5>
                         <div className="flex space-x-6">
@@ -320,11 +323,11 @@ const DesignSystemSection = () => {
               </motion.div>
             </Card>
           </TabsContent>
-          
+
           {/* Forms */}
           <TabsContent value="forms" className="animate-fade-in">
             <Card className="glass-card border border-indigo-500/20 backdrop-blur-xl bg-black/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-              <motion.div 
+              <motion.div
                 className="p-8"
                 variants={container}
                 initial="hidden"
@@ -337,7 +340,7 @@ const DesignSystemSection = () => {
                     Form Components
                   </h3>
                 </motion.div>
-                
+
                 <div className="grid md:grid-cols-2 gap-10">
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-6 text-gray-300 text-lg">Input Types</h4>
@@ -345,19 +348,19 @@ const DesignSystemSection = () => {
                       <div>
                         <label className="block text-sm font-medium mb-2 text-indigo-300">Text Input</label>
                         <div className="relative">
-                          <input 
-                            type="text" 
-                            className="backdrop-blur-xl bg-black/40 w-full p-3 rounded-md border border-gray-800 focus:border-indigo-500/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.2)] outline-none text-white transition-all duration-300" 
-                            placeholder="Enter text" 
+                          <input
+                            type="text"
+                            className="backdrop-blur-xl bg-black/40 w-full p-3 rounded-md border border-gray-800 focus:border-indigo-500/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.2)] outline-none text-white transition-all duration-300"
+                            placeholder="Enter text"
                           />
                           <div className="absolute inset-0 pointer-events-none rounded-md border border-indigo-400/0 group-focus:border-indigo-400/30 transition-colors duration-300"></div>
                         </div>
                       </div>
-                      
+
                       <div>
                         <label className="block text-sm font-medium mb-2 text-indigo-300">Dropdown Select</label>
                         <div className="relative">
-                          <select 
+                          <select
                             className="backdrop-blur-xl bg-black/40 w-full p-3 rounded-md border border-gray-800 focus:border-indigo-500/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.2)] outline-none text-white appearance-none transition-all duration-300"
                           >
                             <option value="option1">Option 1</option>
@@ -366,12 +369,12 @@ const DesignSystemSection = () => {
                           </select>
                           <div className="absolute top-1/2 right-3 transform -translate-y-1/2 pointer-events-none">
                             <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M1 1L6 6L11 1" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M1 1L6 6L11 1" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-center space-x-3">
                         <div className="relative w-5 h-5 group">
                           <input type="checkbox" id="checkbox" className="peer opacity-0 absolute h-5 w-5 cursor-pointer z-10" />
@@ -380,7 +383,7 @@ const DesignSystemSection = () => {
                         </div>
                         <label htmlFor="checkbox" className="text-sm text-indigo-300 cursor-pointer">Checkbox Option</label>
                       </div>
-                      
+
                       <div className="flex items-center space-x-3">
                         <div className="relative w-5 h-5 group">
                           <input type="radio" id="radio" name="radio-group" className="peer opacity-0 absolute h-5 w-5 cursor-pointer z-10" />
@@ -391,37 +394,37 @@ const DesignSystemSection = () => {
                       </div>
                     </div>
                   </motion.div>
-                  
+
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-6 text-gray-300 text-lg">Form Example</h4>
                     <form className="space-y-5 backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">
                       <div>
                         <label className="block text-sm font-medium mb-2 text-indigo-300">Full Name</label>
-                        <input 
-                          type="text" 
-                          className="backdrop-blur-xl bg-black/40 w-full p-3 rounded-md border border-gray-800 focus:border-indigo-500/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.2)] outline-none text-white transition-all duration-300" 
-                          placeholder="John Doe" 
+                        <input
+                          type="text"
+                          className="backdrop-blur-xl bg-black/40 w-full p-3 rounded-md border border-gray-800 focus:border-indigo-500/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.2)] outline-none text-white transition-all duration-300"
+                          placeholder="John Doe"
                         />
                       </div>
-                      
+
                       <div>
                         <label className="block text-sm font-medium mb-2 text-indigo-300">Email Address</label>
-                        <input 
-                          type="email" 
-                          className="backdrop-blur-xl bg-black/40 w-full p-3 rounded-md border border-gray-800 focus:border-indigo-500/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.2)] outline-none text-white transition-all duration-300" 
-                          placeholder="john@example.com" 
+                        <input
+                          type="email"
+                          className="backdrop-blur-xl bg-black/40 w-full p-3 rounded-md border border-gray-800 focus:border-indigo-500/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.2)] outline-none text-white transition-all duration-300"
+                          placeholder="john@example.com"
                         />
                       </div>
-                      
+
                       <div>
                         <label className="block text-sm font-medium mb-2 text-indigo-300">Message</label>
-                        <textarea 
-                          className="backdrop-blur-xl bg-black/40 w-full p-3 rounded-md border border-gray-800 focus:border-indigo-500/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.2)] outline-none text-white transition-all duration-300" 
-                          rows={3} 
+                        <textarea
+                          className="backdrop-blur-xl bg-black/40 w-full p-3 rounded-md border border-gray-800 focus:border-indigo-500/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.2)] outline-none text-white transition-all duration-300"
+                          rows={3}
                           placeholder="Your message here"
                         ></textarea>
                       </div>
-                      
+
                       <div className="flex items-center space-x-3">
                         <div className="relative w-5 h-5 group">
                           <input type="checkbox" id="terms" className="peer opacity-0 absolute h-5 w-5 cursor-pointer z-10" />
@@ -430,8 +433,8 @@ const DesignSystemSection = () => {
                         </div>
                         <label htmlFor="terms" className="text-xs text-gray-400 cursor-pointer">I agree to the terms and conditions</label>
                       </div>
-                      
-                      <Button 
+
+                      <Button
                         className="w-full backdrop-blur-xl bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-500/50 text-indigo-300 transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] py-3"
                       >
                         Submit Form
@@ -442,11 +445,11 @@ const DesignSystemSection = () => {
               </motion.div>
             </Card>
           </TabsContent>
-          
+
           {/* Typography */}
           <TabsContent value="typography" className="animate-fade-in">
             <Card className="glass-card border border-indigo-500/20 backdrop-blur-xl bg-black/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-              <motion.div 
+              <motion.div
                 className="p-8"
                 variants={container}
                 initial="hidden"
@@ -459,7 +462,7 @@ const DesignSystemSection = () => {
                     Typography System
                   </h3>
                 </motion.div>
-                
+
                 <div className="space-y-10">
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-6 text-gray-300 text-lg">Headings</h4>
@@ -496,7 +499,7 @@ const DesignSystemSection = () => {
                       </div>
                     </div>
                   </motion.div>
-                  
+
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-6 text-gray-300 text-lg">Body Text</h4>
                     <div className="space-y-5 backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">
@@ -520,7 +523,7 @@ const DesignSystemSection = () => {
                       </div>
                     </div>
                   </motion.div>
-                  
+
                   <motion.div variants={item}>
                     <h4 className="font-medium mb-6 text-gray-300 text-lg">Special Text</h4>
                     <div className="grid md:grid-cols-3 gap-5 backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">

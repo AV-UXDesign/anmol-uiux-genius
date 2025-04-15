@@ -1,19 +1,19 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Loader2, Search, AlertTriangle, Zap, Check, X, RefreshCw, LayoutGrid } from 'lucide-react';
+import { Heart, Loader2, Search, AlertTriangle, Zap, Check, X, RefreshCw, LayoutGrid , Sparkles} from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 
 const MicroInteractionShowcase = () => {
   const [activeSection, setActiveSection] = useState<'hover' | 'focus' | 'loading' | 'empty'>('hover');
-  
+
   return (
     <section className="py-24 px-4 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#4338ca_1px,transparent_1px)]" 
+        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#4338ca_1px,transparent_1px)]"
           style={{ backgroundSize: '20px 20px' }}></div>
-        <motion.div 
+        <motion.div
           className="absolute top-40 left-40 w-80 h-80 rounded-full bg-purple-500/10 filter blur-3xl"
           animate={{
             x: [0, 40, 0],
@@ -25,7 +25,7 @@ const MicroInteractionShowcase = () => {
             repeatType: "reverse"
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute bottom-40 right-20 w-60 h-60 rounded-full bg-indigo-500/10 filter blur-3xl"
           animate={{
             x: [0, -30, 0],
@@ -50,7 +50,6 @@ const MicroInteractionShowcase = () => {
           >
             <div className="relative flex items-center justify-center mb-2">
               <Zap className="text-indigo-400 h-6 w-6 absolute -left-8" />
-              <span className="text-indigo-400 font-medium">INTERACTIONS</span>
               <Zap className="text-indigo-400 h-6 w-6 absolute -right-8" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
@@ -63,17 +62,39 @@ const MicroInteractionShowcase = () => {
           </p>
         </div>
 
-        <motion.div 
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-block"
+          >
+            <div className="relative flex items-center justify-center mb-2">
+              <Sparkles className="text-indigo-400 h-6 w-6 absolute -left-8" />
+              <Sparkles className="text-indigo-400 h-6 w-6 absolute -right-8" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
+              Micro-Interaction Showcase
+            </h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full mb-6"></div>
+          </motion.div>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Delightful details that enhance user experience through thoughtful animation and feedback.
+          </p>
+        </div>
+
+        <motion.div
           className="flex justify-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          <ToggleGroup 
-            type="single" 
-            value={activeSection} 
-            onValueChange={(value) => value && setActiveSection(value as any)} 
+          <ToggleGroup
+            type="single"
+            value={activeSection}
+            onValueChange={(value) => value && setActiveSection(value as any)}
             className="p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl"
           >
             <ToggleGroupItem value="hover" variant="neonChip" className="relative overflow-hidden">
@@ -107,7 +128,7 @@ const HoverEffectsSection = () => {
     {
       name: "Shine Effect",
       element: (
-        <motion.div 
+        <motion.div
           className="group relative w-full py-3 px-6 rounded-md shadow-lg bg-indigo-600/30 backdrop-blur-md border border-indigo-500/30 overflow-hidden"
           whileHover={{ scale: 1.01 }}
         >
@@ -121,9 +142,9 @@ const HoverEffectsSection = () => {
     {
       name: "Glow Effect",
       element: (
-        <motion.button 
+        <motion.button
           className="relative w-full py-3 px-6 rounded-md bg-black/40 backdrop-blur-md text-indigo-400 border border-indigo-500/30 transition-shadow duration-300"
-          whileHover={{ 
+          whileHover={{
             boxShadow: '0 0 15px rgba(99, 102, 241, 0.5), inset 0 0 10px rgba(99, 102, 241, 0.2)',
             borderColor: 'rgba(99, 102, 241, 0.5)'
           }}
@@ -137,7 +158,7 @@ const HoverEffectsSection = () => {
     {
       name: "Gradient Shift",
       element: (
-        <motion.div 
+        <motion.div
           className="group relative w-full py-3 px-6 rounded-md overflow-hidden border border-indigo-500/30 shadow-lg"
           whileHover={{ scale: 1.02 }}
         >
@@ -151,7 +172,7 @@ const HoverEffectsSection = () => {
     {
       name: "Icon Animation",
       element: (
-        <motion.div 
+        <motion.div
           className="group relative w-full py-3 px-6 rounded-md bg-black/40 backdrop-blur-md text-white border border-gray-800 transition-all duration-300 hover:border-indigo-500/30"
           whileHover={{ backgroundColor: 'rgba(10, 10, 40, 0.6)' }}
         >
@@ -173,7 +194,7 @@ const HoverEffectsSection = () => {
     <div>
       <h3 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">Hover Interactions</h3>
       <p className="text-gray-400 mb-8">Hover over these elements to see the micro-interactions in action.</p>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {hoverEffects.map((effect, index) => (
           <motion.div
@@ -196,7 +217,7 @@ const HoverEffectsSection = () => {
         <div className="flex flex-wrap justify-center gap-6 mt-6">
           <HoverCard>
             <HoverCardTrigger>
-              <motion.button 
+              <motion.button
                 className="py-2 px-4 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/30 transition-colors"
                 whileHover={{ scale: 1.05 }}
               >
@@ -221,27 +242,27 @@ const FocusStatesSection = () => {
     <div>
       <h3 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">Focus States</h3>
       <p className="text-gray-400 mb-8">Click or tab through these elements to see focus states in action.</p>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">
           <h4 className="text-indigo-300 text-sm font-medium mb-4">Text Input Focus</h4>
           <div className="relative overflow-hidden group">
-            <input 
-              type="text" 
-              placeholder="Click me..." 
-              className="w-full p-3 rounded-md bg-black/40 border border-gray-800 text-white outline-none transition-all duration-300 focus:border-indigo-500/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.2)]" 
+            <input
+              type="text"
+              placeholder="Click me..."
+              className="w-full p-3 rounded-md bg-black/40 border border-gray-800 text-white outline-none transition-all duration-300 focus:border-indigo-500/50 focus:shadow-[0_0_15px_rgba(99,102,241,0.2)]"
             />
             <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-indigo-500 to-purple-500 group-focus-within:w-full transition-all duration-500"></div>
           </div>
         </div>
-        
+
         <div className="backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">
           <h4 className="text-indigo-300 text-sm font-medium mb-4">Button Focus Ring</h4>
           <button className="w-full p-3 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:ring-offset-2 focus:ring-offset-black">
             Click me or press Tab
           </button>
         </div>
-        
+
         <div className="backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">
           <h4 className="text-indigo-300 text-sm font-medium mb-4">Checkbox Focus</h4>
           <label className="flex items-center space-x-3 group cursor-pointer">
@@ -253,7 +274,7 @@ const FocusStatesSection = () => {
             <span className="text-gray-300">Custom checkbox with focus state</span>
           </label>
         </div>
-        
+
         <div className="backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">
           <h4 className="text-indigo-300 text-sm font-medium mb-4">Link Focus</h4>
           <div className="p-4 rounded-md bg-black/40">
@@ -284,11 +305,11 @@ const LoadingStatesSection = () => {
     <div>
       <h3 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">Loading States</h3>
       <p className="text-gray-400 mb-8">Click the buttons to trigger different loading states.</p>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">
           <h4 className="text-indigo-300 text-sm font-medium mb-4">Spinner Animation</h4>
-          <button 
+          <button
             className="w-full p-3 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 transition-all duration-300 focus:outline-none disabled:opacity-70"
             onClick={() => handleLoad(setIsLoading1)}
             disabled={isLoading1}
@@ -303,20 +324,20 @@ const LoadingStatesSection = () => {
             )}
           </button>
         </div>
-        
+
         <div className="backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">
           <h4 className="text-indigo-300 text-sm font-medium mb-4">Progress Bar</h4>
-          <button 
+          <button
             className="w-full p-3 mb-4 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 transition-all duration-300 focus:outline-none disabled:opacity-70"
             onClick={() => handleLoad(setIsLoading2)}
             disabled={isLoading2}
           >
             {isLoading2 ? "Loading..." : "Click to Load"}
           </button>
-          
+
           {isLoading2 && (
             <div className="h-1 w-full bg-gray-700/50 rounded-full overflow-hidden">
-              <motion.div 
+              <motion.div
                 className="h-full bg-gradient-to-r from-indigo-500 to-purple-500"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
@@ -325,17 +346,17 @@ const LoadingStatesSection = () => {
             </div>
           )}
         </div>
-        
+
         <div className="backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">
           <h4 className="text-indigo-300 text-sm font-medium mb-4">Skeleton Loading</h4>
-          <button 
+          <button
             className="w-full p-3 mb-4 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 transition-all duration-300 focus:outline-none disabled:opacity-70"
             onClick={() => handleLoad(setIsLoading3)}
             disabled={isLoading3}
           >
             {isLoading3 ? "Loading Content..." : "Load Content"}
           </button>
-          
+
           {isLoading3 ? (
             <div className="space-y-2">
               <div className="h-4 bg-gray-700/50 rounded animate-pulse w-3/4"></div>
@@ -350,10 +371,10 @@ const LoadingStatesSection = () => {
             </div>
           )}
         </div>
-        
+
         <div className="backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">
           <h4 className="text-indigo-300 text-sm font-medium mb-4">Button State Transition</h4>
-          <button 
+          <button
             className="w-full p-3 rounded-md transition-all duration-300 focus:outline-none relative overflow-hidden"
             style={{
               background: isLoading4 ? 'linear-gradient(90deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2))' : 'rgba(99, 102, 241, 0.2)',
@@ -407,18 +428,18 @@ const EmptyStatesSection = () => {
     <div>
       <h3 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">Empty States</h3>
       <p className="text-gray-400 mb-8">User-friendly feedback when there's no content to display.</p>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10 md:col-span-2">
           <h4 className="text-indigo-300 text-sm font-medium mb-4">Search Results</h4>
           <div className="relative mb-4">
-            <input 
-              type="text" 
-              placeholder="Search for something..." 
-              className="w-full p-3 pl-10 rounded-md bg-black/40 border border-gray-800 text-white outline-none transition-all duration-300 focus:border-indigo-500/50" 
+            <input
+              type="text"
+              placeholder="Search for something..."
+              className="w-full p-3 pl-10 rounded-md bg-black/40 border border-gray-800 text-white outline-none transition-all duration-300 focus:border-indigo-500/50"
             />
             <Search className="absolute left-3 top-3 h-5 w-5 text-gray-500" />
-            <button 
+            <button
               className="absolute right-3 top-3 text-indigo-400 hover:text-indigo-300 transition-colors"
               onClick={handleSearch}
               disabled={isSearching}
@@ -426,7 +447,7 @@ const EmptyStatesSection = () => {
               {isSearching ? <Loader2 className="h-5 w-5 animate-spin" /> : "Search"}
             </button>
           </div>
-          
+
           <div className="min-h-[200px] flex items-center justify-center">
             {isSearching ? (
               <div className="text-center">
@@ -437,7 +458,7 @@ const EmptyStatesSection = () => {
               <div className="space-y-4 w-full">
                 <div className="flex justify-between items-center">
                   <h5 className="text-white">Search Results</h5>
-                  <button 
+                  <button
                     className="text-sm text-indigo-400 hover:text-indigo-300"
                     onClick={resetSearch}
                   >
@@ -460,7 +481,7 @@ const EmptyStatesSection = () => {
                 </div>
                 <h5 className="text-white text-lg mb-2">No results found</h5>
                 <p className="text-gray-400 text-sm mb-4">Try searching for something else or check your spelling.</p>
-                <button 
+                <button
                   className="text-indigo-400 hover:text-indigo-300 text-sm"
                   onClick={handleSearch}
                 >
@@ -470,17 +491,17 @@ const EmptyStatesSection = () => {
             )}
           </div>
         </div>
-        
+
         <div className="backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">
           <h4 className="text-indigo-300 text-sm font-medium mb-4">Empty Notifications</h4>
           <div className="p-6 rounded-md bg-black/40 border border-gray-800 min-h-[180px] flex flex-col items-center justify-center text-center">
             <div className="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center mb-3 border border-indigo-500/30">
               <motion.div
-                animate={{ 
+                animate={{
                   scale: [1, 1.1, 1],
                   rotate: [0, 10, 0, -10, 0],
                 }}
-                transition={{ 
+                transition={{
                   duration: 2,
                   repeat: Infinity,
                   repeatType: "reverse",
@@ -494,16 +515,16 @@ const EmptyStatesSection = () => {
             <p className="text-gray-400 text-sm">You don't have any notifications right now.</p>
           </div>
         </div>
-        
+
         <div className="backdrop-blur-xl bg-black/30 p-6 rounded-xl border border-indigo-500/10">
           <h4 className="text-indigo-300 text-sm font-medium mb-4">Error State</h4>
           <div className="p-6 rounded-md bg-black/40 border border-red-500/30 min-h-[180px] flex flex-col items-center justify-center text-center">
             <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center mb-3 border border-red-500/30">
               <motion.div
-                animate={{ 
+                animate={{
                   rotate: [0, 5, 0, -5, 0],
                 }}
-                transition={{ 
+                transition={{
                   duration: 0.5,
                   repeat: Infinity,
                   repeatType: "reverse",

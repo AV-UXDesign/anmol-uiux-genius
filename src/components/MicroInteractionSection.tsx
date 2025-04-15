@@ -8,7 +8,7 @@ const MicroInteractionSection = () => {
   const [hoverState, setHoverState] = useState(false);
   const [focusState, setFocusState] = useState(false);
   const [loadingState, setLoadingState] = useState(false);
-  
+
   // Toggle loading state
   const toggleLoading = () => {
     setLoadingState(true);
@@ -36,9 +36,9 @@ const MicroInteractionSection = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-500/5 rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
-        
+
         {/* Grid pattern */}
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             backgroundImage: `radial-gradient(rgba(99, 102, 241, 0.15) 1px, transparent 1px)`,
@@ -47,28 +47,31 @@ const MicroInteractionSection = () => {
           }}
         ></div>
       </div>
-      
+
       <div className="max-w-6xl mx-auto relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <div className="flex items-center justify-center mb-4">
-            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-indigo-500/10 border border-indigo-500/20 mr-4">
-              <Sparkles className="h-6 w-6 text-indigo-400" />
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-block"
+          >
+            <div className="relative flex items-center justify-center mb-2">
+              <Sparkles className="text-indigo-400 h-6 w-6 absolute -left-8" />
+              <Sparkles className="text-indigo-400 h-6 w-6 absolute -right-8" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold neon-text-indigo">
+            <h2 className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
               Micro-Interaction Showcase
             </h2>
-          </div>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Small details that create delightful experiences and guide users naturally through interfaces
+            <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full mb-6"></div>
+          </motion.div>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Delightful details that enhance user experience through thoughtful animation and feedback.
           </p>
-        </motion.div>
-        
+        </div>
+
+
         <Tabs defaultValue="hover" className="w-full">
           <TabsList className="mx-auto flex justify-center mb-10 backdrop-blur-xl bg-black/40 border border-indigo-500/20 rounded-full overflow-hidden p-1.5">
             <TabsTrigger value="hover" className="rounded-full px-6 data-[state=active]:bg-indigo-500/20 data-[state=active]:text-indigo-400">
@@ -88,12 +91,12 @@ const MicroInteractionSection = () => {
               Empty States
             </TabsTrigger>
           </TabsList>
-          
+
           {/* Hover States */}
           <TabsContent value="hover" className="animate-fade-in">
             <div className="glass-card border border-indigo-500/20 backdrop-blur-xl bg-black/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)] overflow-hidden rounded-xl">
               <div className="md:flex">
-                <motion.div 
+                <motion.div
                   variants={container}
                   initial="hidden"
                   whileInView="show"
@@ -120,18 +123,17 @@ const MicroInteractionSection = () => {
                     </motion.ul>
                   </div>
                 </motion.div>
-                
+
                 <div className="md:w-1/2 bg-black/40 backdrop-blur-xl p-8 flex items-center justify-center">
                   <div className="p-8 w-full max-w-sm relative overflow-hidden">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3, duration: 0.6 }}
-                      className={`relative p-12 backdrop-blur-xl transition-all duration-500 rounded-xl border transform-gpu ${
-                        hoverState 
-                          ? 'border-indigo-500/50 shadow-[0_0_30px_rgba(99,102,241,0.4)] scale-105' 
-                          : 'border-gray-800 bg-black/40'
-                      }`}
+                      className={`relative p-12 backdrop-blur-xl transition-all duration-500 rounded-xl border transform-gpu ${hoverState
+                        ? 'border-indigo-500/50 shadow-[0_0_30px_rgba(99,102,241,0.4)] scale-105'
+                        : 'border-gray-800 bg-black/40'
+                        }`}
                       onMouseEnter={() => setHoverState(true)}
                       onMouseLeave={() => setHoverState(false)}
                     >
@@ -142,13 +144,12 @@ const MicroInteractionSection = () => {
                         <div className={`font-medium transition-all duration-500 transform-gpu ${hoverState ? 'text-indigo-400 scale-105' : 'text-gray-300'}`}>
                           Hover me
                         </div>
-                        <div className={`mt-2 text-xs transition-all duration-500 ${
-                          hoverState ? 'opacity-100 text-indigo-400' : 'opacity-0 text-gray-500'
-                        }`}>
+                        <div className={`mt-2 text-xs transition-all duration-500 ${hoverState ? 'opacity-100 text-indigo-400' : 'opacity-0 text-gray-500'
+                          }`}>
                           Interactive element
                         </div>
                       </div>
-                      
+
                       {hoverState && (
                         <div className="absolute inset-0 pointer-events-none">
                           <div className="absolute -top-10 -left-10 w-32 h-32 bg-indigo-500/10 rounded-full filter blur-xl animate-pulse"></div>
@@ -156,7 +157,7 @@ const MicroInteractionSection = () => {
                         </div>
                       )}
                     </motion.div>
-                    
+
                     <div className="mt-4 text-center text-xs text-gray-500">
                       Try hovering over the element above
                     </div>
@@ -165,12 +166,12 @@ const MicroInteractionSection = () => {
               </div>
             </div>
           </TabsContent>
-          
+
           {/* Focus States */}
           <TabsContent value="focus" className="animate-fade-in">
             <div className="glass-card border border-indigo-500/20 backdrop-blur-xl bg-black/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)] overflow-hidden rounded-xl">
               <div className="md:flex">
-                <motion.div 
+                <motion.div
                   variants={container}
                   initial="hidden"
                   whileInView="show"
@@ -197,7 +198,7 @@ const MicroInteractionSection = () => {
                     </motion.ul>
                   </div>
                 </motion.div>
-                
+
                 <div className="md:w-1/2 bg-black/40 backdrop-blur-xl p-8 flex items-center justify-center">
                   <div className="p-8 w-full max-w-sm">
                     <motion.div
@@ -208,16 +209,15 @@ const MicroInteractionSection = () => {
                     >
                       <input
                         type="text"
-                        className={`w-full py-4 px-5 backdrop-blur-xl bg-black/40 outline-none rounded-lg transition-all duration-500 ${
-                          focusState 
-                            ? 'border border-indigo-500/50 shadow-[0_0_30px_rgba(99,102,241,0.3)]' 
-                            : 'border border-gray-800'
-                        }`}
+                        className={`w-full py-4 px-5 backdrop-blur-xl bg-black/40 outline-none rounded-lg transition-all duration-500 ${focusState
+                          ? 'border border-indigo-500/50 shadow-[0_0_30px_rgba(99,102,241,0.3)]'
+                          : 'border border-gray-800'
+                          }`}
                         placeholder="Click to focus"
                         onFocus={() => setFocusState(true)}
                         onBlur={() => setFocusState(false)}
                       />
-                      
+
                       {focusState && (
                         <div className="absolute inset-0 pointer-events-none">
                           <div className="absolute -top-10 -left-10 w-32 h-32 bg-indigo-500/10 rounded-full filter blur-xl animate-pulse"></div>
@@ -225,9 +225,9 @@ const MicroInteractionSection = () => {
                         </div>
                       )}
                     </motion.div>
-                    
+
                     <div className="text-sm text-center mt-4">
-                      {focusState ? 
+                      {focusState ?
                         <span className="text-indigo-400 animate-fade-in">Element focused for accessibility ✓</span> :
                         <span className="text-gray-500">Click the input to see focus state</span>
                       }
@@ -237,12 +237,12 @@ const MicroInteractionSection = () => {
               </div>
             </div>
           </TabsContent>
-          
+
           {/* Loading States */}
           <TabsContent value="loading" className="animate-fade-in">
             <div className="glass-card border border-indigo-500/20 backdrop-blur-xl bg-black/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)] overflow-hidden rounded-xl">
               <div className="md:flex">
-                <motion.div 
+                <motion.div
                   variants={container}
                   initial="hidden"
                   whileInView="show"
@@ -269,7 +269,7 @@ const MicroInteractionSection = () => {
                     </motion.ul>
                   </div>
                 </motion.div>
-                
+
                 <div className="md:w-1/2 bg-black/40 backdrop-blur-xl p-8 flex items-center justify-center">
                   <div className="p-8 w-full max-w-sm text-center">
                     <motion.div
@@ -281,11 +281,10 @@ const MicroInteractionSection = () => {
                       <button
                         onClick={toggleLoading}
                         disabled={loadingState}
-                        className={`py-3 px-8 backdrop-blur-xl rounded-lg transition-all duration-500 ${
-                          loadingState 
-                            ? 'bg-indigo-500/20 border border-indigo-500/50 text-indigo-400 shadow-[0_0_30px_rgba(99,102,241,0.3)]' 
-                            : 'bg-black/40 border border-gray-800 text-gray-300 hover:border-indigo-500/30 hover:text-indigo-400'
-                        }`}
+                        className={`py-3 px-8 backdrop-blur-xl rounded-lg transition-all duration-500 ${loadingState
+                          ? 'bg-indigo-500/20 border border-indigo-500/50 text-indigo-400 shadow-[0_0_30px_rgba(99,102,241,0.3)]'
+                          : 'bg-black/40 border border-gray-800 text-gray-300 hover:border-indigo-500/30 hover:text-indigo-400'
+                          }`}
                       >
                         {loadingState ? (
                           <div className="flex items-center justify-center space-x-2">
@@ -297,14 +296,14 @@ const MicroInteractionSection = () => {
                           </div>
                         ) : "Click to Load"}
                       </button>
-                      
+
                       {loadingState && (
                         <div className="absolute inset-0 pointer-events-none">
                           <div className="absolute -top-10 -left-10 w-32 h-32 bg-indigo-500/10 rounded-full filter blur-xl animate-pulse"></div>
                           <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-indigo-500/10 rounded-full filter blur-xl animate-pulse" style={{ animationDelay: '0.5s' }}></div>
                         </div>
                       )}
-                      
+
                       {/* Skeleton Loading Example */}
                       <div className="backdrop-blur-xl bg-black/40 rounded-lg border border-gray-800 p-5 text-left">
                         <div className="flex items-center space-x-4 mb-4">
@@ -325,7 +324,7 @@ const MicroInteractionSection = () => {
                             )}
                           </div>
                         </div>
-                        
+
                         {loadingState ? (
                           <>
                             <div className="h-3 bg-gray-800/80 rounded animate-pulse mb-2"></div>
@@ -342,12 +341,12 @@ const MicroInteractionSection = () => {
               </div>
             </div>
           </TabsContent>
-          
+
           {/* Empty States */}
           <TabsContent value="empty" className="animate-fade-in">
             <div className="glass-card border border-indigo-500/20 backdrop-blur-xl bg-black/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)] overflow-hidden rounded-xl">
               <div className="md:flex">
-                <motion.div 
+                <motion.div
                   variants={container}
                   initial="hidden"
                   whileInView="show"
@@ -374,7 +373,7 @@ const MicroInteractionSection = () => {
                     </motion.ul>
                   </div>
                 </motion.div>
-                
+
                 <div className="md:w-1/2 bg-black/40 backdrop-blur-xl p-8 flex items-center justify-center">
                   <div className="p-8 w-full max-w-sm">
                     <motion.div
@@ -399,7 +398,7 @@ const MicroInteractionSection = () => {
                         </motion.button>
                       </div>
                     </motion.div>
-                    
+
                     <div className="mt-4 text-center text-sm text-gray-500">
                       Empty state design with clear next steps for better UX
                     </div>
@@ -418,7 +417,7 @@ const MicroInteractionSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

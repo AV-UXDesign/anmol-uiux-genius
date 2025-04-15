@@ -1,10 +1,11 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, ExternalLink, FileText, Building, Activity, Brain, Code, ChevronsRight, LucideIcon } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, FileText, Building, Activity, Brain, Code, ChevronsRight, LucideIcon, Sparkles } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { motion } from 'framer-motion';
 
 // Type for case study
 interface CaseStudy {
@@ -37,7 +38,7 @@ interface CaseStudy {
 const CaseStudySection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [viewMode, setViewMode] = useState<"ux" | "dev">("ux");
-  
+
   const caseStudies: CaseStudy[] = [
     {
       id: 1,
@@ -209,60 +210,75 @@ const CaseStudySection = () => {
       color: "from-purple-500/20 to-pink-500/20"
     }
   ];
-  
+
   const currentCase = caseStudies[activeIndex];
-  
+
   const nextCase = () => {
     setActiveIndex((prev) => (prev + 1) % caseStudies.length);
   };
-  
+
   const prevCase = () => {
     setActiveIndex((prev) => (prev - 1 + caseStudies.length) % caseStudies.length);
   };
 
   return (
     <section className="py-20 px-4 bg-black" id="case-studies">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center neon-text-blue">
-          Featured Case Studies
-        </h2>
-        <p className="text-center text-gray-400 mb-8 max-w-2xl mx-auto">
+      <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="inline-block"
+        >
+          <div className="relative flex items-center justify-center mb-2">
+            <Sparkles className="text-indigo-400 h-6 w-6 absolute -left-8" />
+            <Sparkles className="text-indigo-400 h-6 w-6 absolute -right-8" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
+            Featured Case Studies
+          </h2>
+          <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full mb-6"></div>
+        </motion.div>
+        <p className="text-gray-400 max-w-2xl mx-auto">
           A selection of projects showcasing my strategic approach to solving complex design challenges and delivering measurable business results.
         </p>
-        
+      </div>
+
+      <div className="max-w-7xl mx-auto">
         {/* View Mode Toggle */}
-        <div className="flex justify-center mb-10">
+        <div className="flex justify-center mb-10 gap-4">
           <ToggleGroup type="single" value={viewMode} onValueChange={(value) => value && setViewMode(value as "ux" | "dev")}>
-            <ToggleGroupItem value="ux" className="px-6 py-2 glass neon-border">
+            <ToggleGroupItem value="ux" className="px-6 py-2 glass">
               UX Designer Lens
             </ToggleGroupItem>
-            <ToggleGroupItem value="dev" className="px-6 py-2 glass neon-border">
+            <ToggleGroupItem value="dev" className="px-6 py-2 glass">
               Angular Dev Lens
             </ToggleGroupItem>
           </ToggleGroup>
         </div>
-        
+
         <div className="relative">
           {/* Navigation Arrows */}
-          <button 
+          <button
             onClick={prevCase}
             className="absolute top-1/2 -left-4 md:-left-10 -translate-y-1/2 z-10 p-2 rounded-full glass hover:neon-border transition-all"
             aria-label="Previous case study"
           >
             <ChevronLeft className="h-6 w-6 text-white" />
           </button>
-          
-          <button 
+
+          <button
             onClick={nextCase}
             className="absolute top-1/2 -right-4 md:-right-10 -translate-y-1/2 z-10 p-2 rounded-full glass hover:neon-border transition-all"
             aria-label="Next case study"
           >
             <ChevronRight className="h-6 w-6 text-white" />
           </button>
-          
+
           {/* Case Study Card */}
           <Card className={`glass-card overflow-hidden rounded-xl shadow-2xl transition-all duration-500 border border-blue-500/20 bg-gradient-to-br ${currentCase.color}`}>
-            <div className="grid md:grid-cols-5 gap-0">
+            <div className="grid md:grid-cols-5 gap-1">
               {/* Sidebar */}
               <div className="md:col-span-1 p-6 glass-enhanced border-r border-blue-500/10 flex flex-col">
                 <div className="flex items-center space-x-3 mb-6">
@@ -274,13 +290,13 @@ const CaseStudySection = () => {
                     <p className="text-xs text-blue-300">{currentCase.subtitle}</p>
                   </div>
                 </div>
-                
+
                 <div className="space-y-4 flex-grow">
                   <div className="text-xs">
                     <h4 className="text-blue-400 font-semibold mb-2">COMPANY</h4>
                     <p className="text-gray-300">{currentCase.company}</p>
                   </div>
-                  
+
                   <div className="text-xs">
                     <h4 className="text-blue-400 font-semibold mb-2">TOOLS & METHODS</h4>
                     <div className="flex flex-wrap gap-2">
@@ -291,7 +307,7 @@ const CaseStudySection = () => {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="text-xs mt-auto">
                     <h4 className="text-blue-400 font-semibold mb-2">KEY OUTCOMES</h4>
                     <div className="grid grid-cols-2 gap-2">
@@ -304,7 +320,7 @@ const CaseStudySection = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <Sheet>
                   <SheetTrigger asChild>
                     <Button variant="outline" className="w-full mt-4 glass border-blue-500/20 text-blue-400 hover:bg-blue-900/20">
@@ -323,13 +339,13 @@ const CaseStudySection = () => {
                           <p className="text-blue-300">{currentCase.subtitle}</p>
                         </div>
                       </div>
-                      
+
                       <div className="space-y-6">
                         <div>
                           <h4 className="text-lg text-blue-400 font-semibold">Challenge</h4>
                           <p className="text-gray-300 mt-2">{currentCase.challenge}</p>
                         </div>
-                        
+
                         <div>
                           <h4 className="text-lg text-blue-400 font-semibold">Key Personas</h4>
                           <div className="grid md:grid-cols-2 gap-4 mt-3">
@@ -337,7 +353,7 @@ const CaseStudySection = () => {
                               <div key={index} className="glass p-4 rounded-xl">
                                 <h5 className="font-bold text-white">{persona.name}, {persona.age}</h5>
                                 <p className="text-sm text-blue-300 mb-2">{persona.role}</p>
-                                
+
                                 <div className="mb-2">
                                   <h6 className="text-xs text-blue-400">GOALS</h6>
                                   <ul className="text-xs text-gray-300 mt-1 space-y-1">
@@ -349,7 +365,7 @@ const CaseStudySection = () => {
                                     ))}
                                   </ul>
                                 </div>
-                                
+
                                 <div>
                                   <h6 className="text-xs text-blue-400">PAIN POINTS</h6>
                                   <ul className="text-xs text-gray-300 mt-1 space-y-1">
@@ -365,18 +381,18 @@ const CaseStudySection = () => {
                             ))}
                           </div>
                         </div>
-                        
+
                         <div>
                           <h4 className="text-lg text-blue-400 font-semibold">Approach & Process</h4>
                           <p className="text-gray-300 mt-2">{currentCase.approach}</p>
                           <p className="text-gray-300 mt-2">{currentCase.process}</p>
                         </div>
-                        
+
                         <div>
                           <h4 className="text-lg text-blue-400 font-semibold">Solution</h4>
                           <p className="text-gray-300 mt-2">{currentCase.solution}</p>
                         </div>
-                        
+
                         <div>
                           <h4 className="text-lg text-blue-400 font-semibold">Business Impact</h4>
                           <div className="grid grid-cols-2 gap-3 mt-3">
@@ -387,7 +403,7 @@ const CaseStudySection = () => {
                             ))}
                           </div>
                         </div>
-                        
+
                         <div>
                           <h4 className="text-lg text-blue-400 font-semibold">Tools & Technologies</h4>
                           <div className="flex flex-wrap gap-2 mt-2">
@@ -403,7 +419,7 @@ const CaseStudySection = () => {
                   </SheetContent>
                 </Sheet>
               </div>
-              
+
               {/* Main Content */}
               <div className="md:col-span-4">
                 {viewMode === "ux" ? (
@@ -412,7 +428,7 @@ const CaseStudySection = () => {
                       <h3 className="text-2xl md:text-3xl font-bold text-white">{currentCase.title}</h3>
                       <span className="px-3 py-1 glass text-xs rounded-full font-medium text-blue-400 border border-blue-500/20">Case Study {activeIndex + 1}/{caseStudies.length}</span>
                     </div>
-                    
+
                     <div className="space-y-6">
                       <div>
                         <h4 className="text-blue-400 font-semibold flex items-center">
@@ -421,7 +437,7 @@ const CaseStudySection = () => {
                         </h4>
                         <p className="text-gray-300 ml-8 mt-2">{currentCase.challenge}</p>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-blue-400 font-semibold flex items-center">
                           <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">2</span>
@@ -465,7 +481,7 @@ const CaseStudySection = () => {
                           ))}
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-blue-400 font-semibold flex items-center">
                           <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">3</span>
@@ -473,7 +489,7 @@ const CaseStudySection = () => {
                         </h4>
                         <p className="text-gray-300 ml-8 mt-2">{currentCase.approach}</p>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-blue-400 font-semibold flex items-center">
                           <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">4</span>
@@ -481,7 +497,7 @@ const CaseStudySection = () => {
                         </h4>
                         <p className="text-gray-300 ml-8 mt-2">{currentCase.process}</p>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-blue-400 font-semibold flex items-center">
                           <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">5</span>
@@ -489,7 +505,7 @@ const CaseStudySection = () => {
                         </h4>
                         <p className="text-gray-300 ml-8 mt-2">{currentCase.solution}</p>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-blue-400 font-semibold flex items-center">
                           <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">6</span>
@@ -514,7 +530,7 @@ const CaseStudySection = () => {
                       <h3 className="text-2xl md:text-3xl font-bold text-white">{currentCase.title} - Technical Implementation</h3>
                       <span className="px-3 py-1 glass text-xs rounded-full font-medium text-blue-400 border border-blue-500/20">Angular Dev View</span>
                     </div>
-                    
+
                     <div className="space-y-6">
                       <div>
                         <h4 className="text-blue-400 font-semibold flex items-center">
@@ -529,7 +545,7 @@ const CaseStudySection = () => {
                           ))}
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-blue-400 font-semibold flex items-center">
                           <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">2</span>
@@ -554,7 +570,7 @@ const CaseStudySection = () => {
                           <p className="text-blue-300 ml-8">└── store/</p>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-blue-400 font-semibold flex items-center">
                           <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">3</span>
@@ -575,7 +591,7 @@ const CaseStudySection = () => {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-blue-400 font-semibold flex items-center">
                           <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">4</span>
@@ -606,7 +622,7 @@ const CaseStudySection = () => {
                           <p className="text-blue-300">{'}'}</p>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-blue-400 font-semibold flex items-center">
                           <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">5</span>
@@ -627,18 +643,17 @@ const CaseStudySection = () => {
               </div>
             </div>
           </Card>
-          
+
           {/* Pagination Dots */}
           <div className="flex justify-center mt-6 space-x-2">
             {caseStudies.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`w-10 h-1 transition-all ${
-                  index === activeIndex 
-                    ? 'bg-blue-500 w-14' 
-                    : 'bg-gray-700'
-                }`}
+                className={`w-10 h-1 transition-all ${index === activeIndex
+                  ? 'bg-blue-500 w-14'
+                  : 'bg-gray-700'
+                  }`}
                 aria-label={`Go to case study ${index + 1}`}
               />
             ))}

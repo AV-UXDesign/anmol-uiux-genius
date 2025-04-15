@@ -65,7 +65,7 @@ const Footer = () => {
           {/* Logo & Description */}
           <motion.div variants={item} className="md:col-span-4">
             <div className="mb-6">
-              <div className="text-3xl font-bold neon-text-indigo relative inline-block">
+              <div className="text-3xl font-bold relative inline-block">
                 Anmol V
                 <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
               </div>
@@ -148,8 +148,8 @@ const Footer = () => {
             
             <div>
               <div className="text-gray-400 mb-2">Get in touch</div>
-              <a href="mailto:anmol@example.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
-                anmol@example.com
+              <a href="mailto:anmolvishwakarma1105@gmail.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                anmolvishwakarma1105@gmail.com
               </a>
             </div>
           </motion.div>
