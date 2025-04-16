@@ -79,11 +79,18 @@ const ToolBeltSection = () => {
       proficiency: 90
     },
     {
-      name: 'Framer',
-      icon: <Cpu />,
-      description: 'Interactive UI, motion prototyping, micro animations',
+      name: 'Hotjar',
+      icon: <BarChart4 />,
+      description: 'Heatmaps, session recordings, and user feedback to improve the user experience.',
       category: 'prototyping',
       proficiency: 85
+    },
+    {
+      name: 'Lookback.io',
+      icon: <Layers />, // Replace with a valid icon, e.g., Layers
+      description: 'User interviews, live testing, feedback gathering, and real-time collaboration.',
+      category: 'prototyping',
+      proficiency: 80
     },
     {
       name: 'Analytics',
