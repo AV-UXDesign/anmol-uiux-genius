@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, ExternalLink, FileText, Building, Activity, Brain, Code, ChevronsRight, LucideIcon, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, FileText, Building, Activity, Brain, Code, ChevronsRight, LucideIcon, Sparkles, Award, Rocket, ArrowRight, Users, Target, Zap } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -32,6 +33,7 @@ interface CaseStudy {
   }[];
   icon: LucideIcon;
   color: string;
+  gradientColor: string;
 }
 
 const CaseStudySection = () => {
@@ -79,7 +81,8 @@ const CaseStudySection = () => {
         { metric: "Training Time", value: "6 days (was 6 weeks)" }
       ],
       icon: Building,
-      color: "from-blue-500/20 to-purple-500/20"
+      color: "from-indigo-900/30 to-violet-900/30",
+      gradientColor: "bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-indigo-500/10"
     },
     {
       id: 2,
@@ -122,7 +125,8 @@ const CaseStudySection = () => {
         { metric: "User Satisfaction", value: "97%" }
       ],
       icon: Activity,
-      color: "from-green-500/20 to-blue-500/20"
+      color: "from-emerald-900/30 to-teal-900/30",
+      gradientColor: "bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-emerald-500/10"
     },
     {
       id: 3,
@@ -164,7 +168,8 @@ const CaseStudySection = () => {
         { metric: "Mobile Conversion", value: "+38%" }
       ],
       icon: Brain,
-      color: "from-orange-500/20 to-red-500/20"
+      color: "from-amber-900/30 to-orange-900/30",
+      gradientColor: "bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10"
     },
     {
       id: 4,
@@ -206,7 +211,8 @@ const CaseStudySection = () => {
         { metric: "Template Reuse", value: "+60%" }
       ],
       icon: Code,
-      color: "from-purple-500/20 to-pink-500/20"
+      color: "from-fuchsia-900/30 to-pink-900/30",
+      gradientColor: "bg-gradient-to-r from-fuchsia-500/10 via-pink-500/10 to-fuchsia-500/10"
     }
   ];
 
@@ -231,27 +237,27 @@ const CaseStudySection = () => {
           className="inline-block"
         >
           <div className="relative flex items-center justify-center mb-2">
-            <Sparkles className="text-indigo-400 h-6 w-6 absolute -left-8" />
-            <Sparkles className="text-indigo-400 h-6 w-6 absolute -right-8" />
+            <Award className="text-purple-400 h-6 w-6 absolute -left-8" />
+            <Sparkles className="text-purple-400 h-6 w-6 absolute -right-8" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
+          <h2 className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-400 to-purple-400">
             Featured Case Studies
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full mb-6"></div>
+          <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-fuchsia-500 mx-auto rounded-full mb-6"></div>
         </motion.div>
-        <p className="text-gray-400 max-w-2xl mx-auto">
+        <p className="text-gray-300 max-w-2xl mx-auto">
           A selection of projects showcasing my strategic approach to solving complex design challenges and delivering measurable business results.
         </p>
       </div>
 
       <div className="max-w-7xl mx-auto">
         {/* View Mode Toggle */}
-        <div className="flex justify-center mb-10 gap-12">
-          <ToggleGroup className="gap-4" type="single" value={viewMode} onValueChange={(value) => value && setViewMode(value as "ux" | "dev")}>
-            <ToggleGroupItem value="ux" className="h-12 px-6 py-3 glass rounded-md text-white font-medium text-sm">
+        <div className="flex justify-center mb-10">
+          <ToggleGroup className="glass border border-white/5 p-1 rounded-full" type="single" value={viewMode} onValueChange={(value) => value && setViewMode(value as "ux" | "dev")}>
+            <ToggleGroupItem value="ux" className="h-10 px-6 py-2 rounded-full text-white font-medium text-sm">
               UX Designer Lens
             </ToggleGroupItem>
-            <ToggleGroupItem value="dev" className="h-12 px-6 py-3 glass rounded-md text-white font-medium text-sm">
+            <ToggleGroupItem value="dev" className="h-10 px-6 py-2 rounded-full text-white font-medium text-sm">
               Angular Dev Lens
             </ToggleGroupItem>
           </ToggleGroup>
@@ -261,216 +267,246 @@ const CaseStudySection = () => {
           {/* Navigation Arrows */}
           <button
             onClick={prevCase}
-            className="absolute top-1/2 -left-4 md:-left-10 -translate-y-1/2 z-10 p-2 rounded-full glass hover:neon-border transition-all"
+            className="absolute top-1/2 -left-4 md:-left-10 -translate-y-1/2 z-10 p-3 rounded-full glass hover:scale-110 transition-all duration-300 border border-white/5"
             aria-label="Previous case study"
           >
-            <ChevronLeft className="h-6 w-6 text-white" />
+            <ChevronLeft className="h-5 w-5 text-white" />
           </button>
 
           <button
             onClick={nextCase}
-            className="absolute top-1/2 -right-4 md:-right-10 -translate-y-1/2 z-10 p-2 rounded-full glass hover:neon-border transition-all"
+            className="absolute top-1/2 -right-4 md:-right-10 -translate-y-1/2 z-10 p-3 rounded-full glass hover:scale-110 transition-all duration-300 border border-white/5"
             aria-label="Next case study"
           >
-            <ChevronRight className="h-6 w-6 text-white" />
+            <ChevronRight className="h-5 w-5 text-white" />
           </button>
 
-          {/* Case Study Card */}
-          <Card className={`glass-card overflow-hidden rounded-xl shadow-2xl transition-all duration-500 border border-blue-500/20 bg-gradient-to-br ${currentCase.color}`}>
-            <div className="grid md:grid-cols-5 gap-1">
-              {/* Sidebar */}
-              <div className="md:col-span-1 p-6 glass-enhanced border-r border-blue-500/10 flex flex-col">
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center glass">
-                    <currentCase.icon className="h-5 w-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white">{currentCase.title}</h3>
-                    <p className="text-xs text-blue-300">{currentCase.subtitle}</p>
-                  </div>
-                </div>
-
-                <div className="space-y-4 flex-grow">
-                  <div className="text-xs">
-                    <h4 className="text-blue-400 font-semibold mb-2">COMPANY</h4>
-                    <p className="text-gray-300">{currentCase.company}</p>
-                  </div>
-
-                  <div className="text-xs">
-                    <h4 className="text-blue-400 font-semibold mb-2">TOOLS & METHODS</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {currentCase.tools.map((tool, index) => (
-                        <span key={index} className="text-xs px-2 py-1 glass rounded-full text-gray-300">
-                          {tool}
-                        </span>
-                      ))}
+          {/* Modern Case Study Card */}
+          <Card className={`overflow-hidden rounded-2xl shadow-2xl glass-card border-0 ${currentCase.gradientColor}`}>
+            <div className="grid md:grid-cols-12 gap-0">
+              {/* Left Sidebar */}
+              <div className="md:col-span-3 glass-enhanced">
+                <div className="p-8 flex flex-col h-full">
+                  {/* Case Study Header */}
+                  <div className="flex items-center space-x-3 mb-8">
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center glass border border-white/10`}>
+                      <currentCase.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white">{currentCase.title}</h3>
+                      <p className="text-sm text-gray-300">{currentCase.subtitle}</p>
                     </div>
                   </div>
-
-                  <div className="text-xs mt-auto">
-                    <h4 className="text-blue-400 font-semibold mb-2">KEY OUTCOMES</h4>
-                    <div className="grid grid-cols-2 gap-2">
+                  
+                  {/* Key Info */}
+                  <div className="space-y-6 mb-6">
+                    <div>
+                      <h4 className="text-xs uppercase tracking-wider text-gray-400 mb-2 font-medium">Industry</h4>
+                      <p className="text-white font-medium">{currentCase.company}</p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-xs uppercase tracking-wider text-gray-400 mb-2 font-medium">Technology & Methods</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {currentCase.tools.map((tool, index) => (
+                          <span key={index} className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium glass border border-white/5 text-gray-200">
+                            {tool}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Case Study Outcomes */}
+                  <div className="mt-auto">
+                    <h4 className="text-xs uppercase tracking-wider text-gray-400 mb-3 font-medium">Key Outcomes</h4>
+                    <div className="grid grid-cols-2 gap-3">
                       {currentCase.outcomes.map((outcome, index) => (
-                        <div key={index} className="glass p-2 rounded-md">
-                          <p className="text-gray-400 text-[10px]">{outcome.metric}</p>
-                          <p className="text-white font-bold">{outcome.value}</p>
+                        <div key={index} className="glass p-3 rounded-lg border border-white/5 flex flex-col">
+                          <p className="text-xs text-gray-400">{outcome.metric}</p>
+                          <p className="text-lg font-bold text-white">{outcome.value}</p>
                         </div>
                       ))}
                     </div>
                   </div>
-                </div>
-
-                <Sheet>
-                  <SheetTrigger asChild>
-                    <Button variant="outline" className="w-full mt-4 glass border-blue-500/20 text-blue-400 hover:bg-blue-900/20">
-                      <FileText className="mr-2 h-4 w-4" />
-                      Full Case Study
-                    </Button>
-                  </SheetTrigger>
-                  <SheetContent className="glass-enhanced bg-black/40 backdrop-blur-lg overflow-y-auto w-full sm:max-w-none md:max-w-xl">
-                    <div className="space-y-6 py-6">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center glass">
-                          <currentCase.icon className="h-6 w-6 text-blue-400" />
+                  
+                  {/* Call to Action Button */}
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <Button variant="outline" className="w-full mt-6 rounded-lg bg-white/5 hover:bg-white/10 text-white border-white/10 hover:border-white/20">
+                        <FileText className="mr-2 h-4 w-4" />
+                        Full Case Study
+                      </Button>
+                    </SheetTrigger>
+                    <SheetContent className="glass-enhanced backdrop-blur-lg border-none overflow-y-auto w-full sm:max-w-none md:max-w-2xl">
+                      <div className="space-y-6 py-6">
+                        <div className="flex items-center space-x-3">
+                          <div className={`w-14 h-14 rounded-lg flex items-center justify-center glass border border-white/10`}>
+                            <currentCase.icon className="h-7 w-7 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="text-2xl font-bold text-white">{currentCase.title}</h3>
+                            <p className="text-gray-300">{currentCase.subtitle}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="text-2xl font-bold text-white">{currentCase.title}</h3>
-                          <p className="text-blue-300">{currentCase.subtitle}</p>
+
+                        <div className="space-y-8">
+                          <div className="glass rounded-xl p-6 border border-white/5">
+                            <h4 className="flex items-center text-lg font-medium text-white mb-3">
+                              <Target className="h-5 w-5 mr-2 text-purple-400" />
+                              Business Challenge
+                            </h4>
+                            <p className="text-gray-300">{currentCase.challenge}</p>
+                          </div>
+
+                          <div>
+                            <h4 className="flex items-center text-lg font-medium text-white mb-4">
+                              <Users className="h-5 w-5 mr-2 text-purple-400" />
+                              Key Personas
+                            </h4>
+                            <div className="grid md:grid-cols-2 gap-4">
+                              {currentCase.personas.map((persona, index) => (
+                                <div key={index} className="glass p-5 rounded-xl border border-white/5">
+                                  <div className="flex items-center mb-4">
+                                    <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-white font-bold mr-3">
+                                      {persona.name.charAt(0)}
+                                    </div>
+                                    <div>
+                                      <h5 className="font-bold text-white">{persona.name}, {persona.age}</h5>
+                                      <p className="text-sm text-gray-400">{persona.role}</p>
+                                    </div>
+                                  </div>
+                                  
+                                  <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                      <h6 className="text-xs uppercase tracking-wide text-gray-400 mb-2">Goals</h6>
+                                      <ul className="space-y-2">
+                                        {persona.goals.map((goal, gIndex) => (
+                                          <li key={gIndex} className="flex items-start text-sm text-gray-300">
+                                            <ArrowRight className="h-3.5 w-3.5 text-purple-400 mr-2 mt-0.5 shrink-0" />
+                                            {goal}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                    
+                                    <div>
+                                      <h6 className="text-xs uppercase tracking-wide text-gray-400 mb-2">Pain Points</h6>
+                                      <ul className="space-y-2">
+                                        {persona.painPoints.map((pain, pIndex) => (
+                                          <li key={pIndex} className="flex items-start text-sm text-gray-300">
+                                            <ArrowRight className="h-3.5 w-3.5 text-purple-400 mr-2 mt-0.5 shrink-0" />
+                                            {pain}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="glass rounded-xl p-6 border border-white/5">
+                            <h4 className="flex items-center text-lg font-medium text-white mb-3">
+                              <Rocket className="h-5 w-5 mr-2 text-purple-400" />
+                              Approach & Process
+                            </h4>
+                            <p className="text-gray-300 mb-3">{currentCase.approach}</p>
+                            <p className="text-gray-300">{currentCase.process}</p>
+                          </div>
+
+                          <div className="glass rounded-xl p-6 border border-white/5">
+                            <h4 className="flex items-center text-lg font-medium text-white mb-3">
+                              <Zap className="h-5 w-5 mr-2 text-purple-400" />
+                              Solution
+                            </h4>
+                            <p className="text-gray-300">{currentCase.solution}</p>
+                          </div>
+
+                          <div>
+                            <h4 className="flex items-center text-lg font-medium text-white mb-4">
+                              <Award className="h-5 w-5 mr-2 text-purple-400" />
+                              Business Impact
+                            </h4>
+                            <div className="grid grid-cols-2 gap-3">
+                              {currentCase.impact.map((item, index) => (
+                                <div key={index} className="glass p-4 rounded-lg border border-white/5 flex items-center">
+                                  <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">
+                                    {index + 1}
+                                  </div>
+                                  <p className="text-gray-300">{item}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
+                    </SheetContent>
+                  </Sheet>
+                </div>
+              </div>
 
-                      <div className="space-y-6">
-                        <div>
-                          <h4 className="text-lg text-blue-400 font-semibold">Challenge</h4>
-                          <p className="text-gray-300 mt-2">{currentCase.challenge}</p>
-                        </div>
+              {/* Main Content */}
+              <div className="md:col-span-9 bg-black/20 backdrop-blur-sm">
+                {viewMode === "ux" ? (
+                  <div className="p-8">
+                    <div className="flex items-center justify-between mb-6">
+                      <h3 className="text-2xl md:text-3xl font-bold text-white">{currentCase.title}</h3>
+                      <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/10 backdrop-blur-md text-white border border-white/5">
+                        Case Study {activeIndex + 1}/{caseStudies.length}
+                      </span>
+                    </div>
 
-                        <div>
-                          <h4 className="text-lg text-blue-400 font-semibold">Key Personas</h4>
-                          <div className="grid md:grid-cols-2 gap-4 mt-3">
-                            {currentCase.personas.map((persona, index) => (
-                              <div key={index} className="glass p-4 rounded-xl">
-                                <h5 className="font-bold text-white">{persona.name}, {persona.age}</h5>
-                                <p className="text-sm text-blue-300 mb-2">{persona.role}</p>
-
-                                <div className="mb-2">
-                                  <h6 className="text-xs text-blue-400">GOALS</h6>
-                                  <ul className="text-xs text-gray-300 mt-1 space-y-1">
+                    <div className="space-y-8">
+                      {/* Problem Statement */}
+                      <div className="glass rounded-xl p-6 border border-white/5">
+                        <h4 className="text-white font-semibold text-lg mb-3 flex items-center">
+                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">1</span>
+                          Problem Statement
+                        </h4>
+                        <p className="text-gray-300">{currentCase.challenge}</p>
+                      </div>
+                      
+                      {/* User Research */}
+                      <div>
+                        <h4 className="text-white font-semibold text-lg mb-4 flex items-center">
+                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">2</span>
+                          User Research
+                        </h4>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          {currentCase.personas.map((persona, index) => (
+                            <div key={index} className="glass rounded-xl p-5 border border-white/5">
+                              <div className="flex items-center mb-3">
+                                <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-white font-bold mr-3">
+                                  {persona.name.charAt(0)}
+                                </div>
+                                <div>
+                                  <h5 className="font-bold text-white">{persona.name}, {persona.age}</h5>
+                                  <p className="text-sm text-gray-400">{persona.role}</p>
+                                </div>
+                              </div>
+                              
+                              <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                  <h6 className="text-xs uppercase tracking-wide text-gray-400 mb-2">Goals</h6>
+                                  <ul className="space-y-1.5">
                                     {persona.goals.map((goal, gIndex) => (
-                                      <li key={gIndex} className="flex items-start">
-                                        <ChevronsRight className="h-3 w-3 text-blue-500 mr-1 mt-0.5" />
+                                      <li key={gIndex} className="flex items-start text-sm text-gray-300">
+                                        <ArrowRight className="h-3.5 w-3.5 text-purple-400 mr-1.5 mt-0.5 shrink-0" />
                                         {goal}
                                       </li>
                                     ))}
                                   </ul>
                                 </div>
-
+                                
                                 <div>
-                                  <h6 className="text-xs text-blue-400">PAIN POINTS</h6>
-                                  <ul className="text-xs text-gray-300 mt-1 space-y-1">
+                                  <h6 className="text-xs uppercase tracking-wide text-gray-400 mb-2">Pain Points</h6>
+                                  <ul className="space-y-1.5">
                                     {persona.painPoints.map((pain, pIndex) => (
-                                      <li key={pIndex} className="flex items-start">
-                                        <ChevronsRight className="h-3 w-3 text-blue-500 mr-1 mt-0.5" />
+                                      <li key={pIndex} className="flex items-start text-sm text-gray-300">
+                                        <ArrowRight className="h-3.5 w-3.5 text-purple-400 mr-1.5 mt-0.5 shrink-0" />
                                         {pain}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div>
-                          <h4 className="text-lg text-blue-400 font-semibold">Approach & Process</h4>
-                          <p className="text-gray-300 mt-2">{currentCase.approach}</p>
-                          <p className="text-gray-300 mt-2">{currentCase.process}</p>
-                        </div>
-
-                        <div>
-                          <h4 className="text-lg text-blue-400 font-semibold">Solution</h4>
-                          <p className="text-gray-300 mt-2">{currentCase.solution}</p>
-                        </div>
-
-                        <div>
-                          <h4 className="text-lg text-blue-400 font-semibold">Business Impact</h4>
-                          <div className="grid grid-cols-2 gap-3 mt-3">
-                            {currentCase.impact.map((item, index) => (
-                              <div key={index} className="glass p-3 rounded-lg border border-blue-500/10">
-                                <p className="text-gray-300 text-sm">{item}</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div>
-                          <h4 className="text-lg text-blue-400 font-semibold">Tools & Technologies</h4>
-                          <div className="flex flex-wrap gap-2 mt-2">
-                            {currentCase.tools.map((tool, index) => (
-                              <span key={index} className="px-3 py-1 glass rounded-full text-gray-300">
-                                {tool}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </SheetContent>
-                </Sheet>
-              </div>
-
-              {/* Main Content */}
-              <div className="md:col-span-4">
-                {viewMode === "ux" ? (
-                  <div className="p-6 bg-black/40 backdrop-blur-lg">
-                    <div className="flex items-center justify-between mb-6">
-                      <h3 className="text-2xl md:text-3xl font-bold text-white">{currentCase.title}</h3>
-                      <span className="px-3 py-1 glass text-xs rounded-full font-medium text-blue-400 border border-blue-500/20">Case Study {activeIndex + 1}/{caseStudies.length}</span>
-                    </div>
-
-                    <div className="space-y-6">
-                      <div>
-                        <h4 className="text-blue-400 font-semibold flex items-center">
-                          <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">1</span>
-                          Business Challenge
-                        </h4>
-                        <p className="text-gray-300 ml-8 mt-2">{currentCase.challenge}</p>
-                      </div>
-
-                      <div>
-                        <h4 className="text-blue-400 font-semibold flex items-center">
-                          <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">2</span>
-                          User Personas & Research
-                        </h4>
-                        <div className="ml-8 mt-2 grid md:grid-cols-2 gap-4">
-                          {currentCase.personas.map((persona, index) => (
-                            <div key={index} className="glass-card p-4 rounded-lg border border-blue-500/10">
-                              <div className="flex items-center mb-2">
-                                <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-300 mr-3">
-                                  {persona.name.charAt(0)}
-                                </div>
-                                <div>
-                                  <h5 className="text-white font-medium">{persona.name}, {persona.age}</h5>
-                                  <p className="text-xs text-gray-400">{persona.role}</p>
-                                </div>
-                              </div>
-                              <div className="grid grid-cols-2 gap-2 text-xs">
-                                <div>
-                                  <h6 className="text-blue-400 mb-1">Goals:</h6>
-                                  <ul className="space-y-1 text-gray-300">
-                                    {persona.goals.map((goal, gIndex) => (
-                                      <li key={gIndex} className="flex items-start">
-                                        <span className="text-blue-400 mr-1">•</span> {goal}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                                <div>
-                                  <h6 className="text-blue-400 mb-1">Pain Points:</h6>
-                                  <ul className="space-y-1 text-gray-300">
-                                    {persona.painPoints.map((pain, pIndex) => (
-                                      <li key={pIndex} className="flex items-start">
-                                        <span className="text-blue-400 mr-1">•</span> {pain}
                                       </li>
                                     ))}
                                   </ul>
@@ -480,40 +516,44 @@ const CaseStudySection = () => {
                           ))}
                         </div>
                       </div>
-
-                      <div>
-                        <h4 className="text-blue-400 font-semibold flex items-center">
-                          <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">3</span>
-                          Design Approach
+                      
+                      {/* Design Strategy */}
+                      <div className="glass rounded-xl p-6 border border-white/5">
+                        <h4 className="text-white font-semibold text-lg mb-3 flex items-center">
+                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">3</span>
+                          Design Strategy
                         </h4>
-                        <p className="text-gray-300 ml-8 mt-2">{currentCase.approach}</p>
+                        <p className="text-gray-300">{currentCase.approach}</p>
                       </div>
-
-                      <div>
-                        <h4 className="text-blue-400 font-semibold flex items-center">
-                          <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">4</span>
+                      
+                      {/* UX Process */}
+                      <div className="glass rounded-xl p-6 border border-white/5">
+                        <h4 className="text-white font-semibold text-lg mb-3 flex items-center">
+                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">4</span>
                           UX Process
                         </h4>
-                        <p className="text-gray-300 ml-8 mt-2">{currentCase.process}</p>
+                        <p className="text-gray-300">{currentCase.process}</p>
                       </div>
-
-                      <div>
-                        <h4 className="text-blue-400 font-semibold flex items-center">
-                          <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">5</span>
-                          Solution & Implementation
+                      
+                      {/* Solution */}
+                      <div className="glass rounded-xl p-6 border border-white/5">
+                        <h4 className="text-white font-semibold text-lg mb-3 flex items-center">
+                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">5</span>
+                          Solution
                         </h4>
-                        <p className="text-gray-300 ml-8 mt-2">{currentCase.solution}</p>
+                        <p className="text-gray-300">{currentCase.solution}</p>
                       </div>
-
+                      
+                      {/* Impact */}
                       <div>
-                        <h4 className="text-blue-400 font-semibold flex items-center">
-                          <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">6</span>
+                        <h4 className="text-white font-semibold text-lg mb-4 flex items-center">
+                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">6</span>
                           Business Impact
                         </h4>
-                        <div className="grid grid-cols-2 gap-3 mt-2 ml-8">
+                        <div className="grid md:grid-cols-3 gap-3">
                           {currentCase.impact.map((item, index) => (
-                            <div key={index} className="glass p-3 rounded-lg border border-blue-500/10 flex items-center">
-                              <div className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center mr-3 text-blue-300 text-xs">
+                            <div key={index} className="glass p-4 rounded-lg border border-white/5 flex items-center">
+                              <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">
                                 {index + 1}
                               </div>
                               <p className="text-gray-300 text-sm">{item}</p>
@@ -524,114 +564,121 @@ const CaseStudySection = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="p-6 bg-black/40 backdrop-blur-lg">
+                  <div className="p-8">
                     <div className="flex items-center justify-between mb-6">
-                      <h3 className="text-2xl md:text-3xl font-bold text-white">{currentCase.title} - Technical Implementation</h3>
-                      <span className="px-3 py-1 glass text-xs rounded-full font-medium text-blue-400 border border-blue-500/20">Angular Dev View</span>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white">{currentCase.title} - Angular Implementation</h3>
+                      <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white border border-white/5">
+                        Dev View
+                      </span>
                     </div>
 
-                    <div className="space-y-6">
-                      <div>
-                        <h4 className="text-blue-400 font-semibold flex items-center">
-                          <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">1</span>
-                          Technical Stack
+                    <div className="space-y-8">
+                      {/* Tech Stack */}
+                      <div className="glass rounded-xl p-6 border border-white/5">
+                        <h4 className="text-white font-semibold text-lg mb-4 flex items-center">
+                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">1</span>
+                          Technology Stack
                         </h4>
-                        <div className="flex flex-wrap gap-2 mt-2 ml-8">
+                        <div className="flex flex-wrap gap-3">
                           {currentCase.tools.map((tool, index) => (
-                            <span key={index} className="px-3 py-2 glass rounded-lg text-gray-300 text-sm">
+                            <span key={index} className="px-4 py-2 rounded-lg glass border border-white/5 text-white">
                               {tool}
                             </span>
                           ))}
                         </div>
                       </div>
-
-                      <div>
-                        <h4 className="text-blue-400 font-semibold flex items-center">
-                          <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">2</span>
-                          Architecture Overview
+                      
+                      {/* Architecture */}
+                      <div className="glass rounded-xl p-6 border border-white/5">
+                        <h4 className="text-white font-semibold text-lg mb-4 flex items-center">
+                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">2</span>
+                          Architecture
                         </h4>
-                        <div className="ml-8 mt-2 terminal p-4 font-mono text-xs">
-                          <p className="text-green-400">// {currentCase.title} Angular Architecture</p>
-                          <p className="text-gray-400 mt-2">├── core/</p>
-                          <p className="text-blue-300 ml-4">├── auth/         <span className="text-gray-500">// Authentication services</span></p>
-                          <p className="text-blue-300 ml-4">├── http/         <span className="text-gray-500">// API interceptors & handlers</span></p>
-                          <p className="text-blue-300 ml-4">└── store/        <span className="text-gray-500">// State management (NgRx)</span></p>
-                          <p className="text-gray-400">├── shared/</p>
-                          <p className="text-blue-300 ml-4">├── components/   <span className="text-gray-500">// Reusable UI components</span></p>
-                          <p className="text-blue-300 ml-4">├── directives/   <span className="text-gray-500">// Custom directives</span></p>
-                          <p className="text-blue-300 ml-4">└── pipes/        <span className="text-gray-500">// Custom pipes</span></p>
-                          <p className="text-gray-400">└── features/</p>
-                          <p className="text-blue-300 ml-4">├── dashboard/    <span className="text-gray-500">// Feature module</span></p>
-                          <p className="text-blue-300 ml-4">├── {currentCase.title.toLowerCase()}/  <span className="text-gray-500">// Main feature module</span></p>
-                          <p className="text-blue-300 ml-8">├── components/</p>
-                          <p className="text-blue-300 ml-8">├── services/</p>
-                          <p className="text-blue-300 ml-8">├── models/</p>
-                          <p className="text-blue-300 ml-8">└── store/</p>
+                        <div className="terminal p-5 font-mono text-sm rounded-lg">
+                          <p className="text-purple-400">// {currentCase.title} Architecture</p>
+                          <p className="text-gray-300 mt-3">├── core/</p>
+                          <p className="text-gray-300 ml-4">├── auth/         <span className="text-gray-500">// Authentication</span></p>
+                          <p className="text-gray-300 ml-4">├── http/         <span className="text-gray-500">// Interceptors</span></p>
+                          <p className="text-gray-300 ml-4">└── store/        <span className="text-gray-500">// NgRx state</span></p>
+                          <p className="text-gray-300 mt-1">├── shared/</p>
+                          <p className="text-gray-300 ml-4">├── components/   <span className="text-gray-500">// UI components</span></p>
+                          <p className="text-gray-300 ml-4">├── directives/   <span className="text-gray-500">// Directives</span></p>
+                          <p className="text-gray-300 ml-4">└── pipes/        <span className="text-gray-500">// Pipes</span></p>
+                          <p className="text-gray-300 mt-1">└── features/</p>
+                          <p className="text-gray-300 ml-4">├── dashboard/    <span className="text-gray-500">// Feature module</span></p>
+                          <p className="text-gray-300 ml-4">└── {currentCase.title.toLowerCase()}/</p>
+                          <p className="text-gray-300 ml-8">├── components/</p>
+                          <p className="text-gray-300 ml-8">├── services/</p>
+                          <p className="text-gray-300 ml-8">├── models/</p>
+                          <p className="text-gray-300 ml-8">└── store/</p>
                         </div>
                       </div>
-
+                      
+                      {/* Implementation */}
                       <div>
-                        <h4 className="text-blue-400 font-semibold flex items-center">
-                          <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">3</span>
+                        <h4 className="text-white font-semibold text-lg mb-4 flex items-center">
+                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">3</span>
                           Key Implementation Features
                         </h4>
-                        <div className="ml-8 mt-2 space-y-3">
-                          <div className="glass p-3 rounded-lg">
-                            <h5 className="text-blue-300 font-medium mb-1">Responsive Angular Components</h5>
-                            <p className="text-gray-300 text-sm">Built with Angular Material and custom components using responsive design principles with Flexbox and CSS Grid.</p>
+                        <div className="grid md:grid-cols-3 gap-4">
+                          <div className="glass p-5 rounded-lg border border-white/5">
+                            <h5 className="text-white font-medium mb-2">Responsive Architecture</h5>
+                            <p className="text-gray-300 text-sm">Built with Angular Material and custom components using responsive design principles.</p>
                           </div>
-                          <div className="glass p-3 rounded-lg">
-                            <h5 className="text-blue-300 font-medium mb-1">State Management</h5>
-                            <p className="text-gray-300 text-sm">Implemented NgRx for global state management with side-effects handling via Effects API and optimized with selectors.</p>
+                          <div className="glass p-5 rounded-lg border border-white/5">
+                            <h5 className="text-white font-medium mb-2">State Management</h5>
+                            <p className="text-gray-300 text-sm">Implemented NgRx for global state with Effects API and selectors.</p>
                           </div>
-                          <div className="glass p-3 rounded-lg">
-                            <h5 className="text-blue-300 font-medium mb-1">Performance Optimization</h5>
-                            <p className="text-gray-300 text-sm">Leveraged Angular's OnPush change detection strategy, lazy loading, and virtual scrolling for optimal performance.</p>
+                          <div className="glass p-5 rounded-lg border border-white/5">
+                            <h5 className="text-white font-medium mb-2">Performance</h5>
+                            <p className="text-gray-300 text-sm">OnPush change detection, lazy loading, and virtual scrolling for optimal performance.</p>
                           </div>
                         </div>
                       </div>
-
-                      <div>
-                        <h4 className="text-blue-400 font-semibold flex items-center">
-                          <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">4</span>
-                          Sample Component Code
+                      
+                      {/* Sample Code */}
+                      <div className="glass rounded-xl p-6 border border-white/5">
+                        <h4 className="text-white font-semibold text-lg mb-4 flex items-center">
+                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">4</span>
+                          Sample Component
                         </h4>
-                        <div className="ml-8 mt-2 terminal p-4 font-mono text-xs overflow-auto">
-                          <p className="text-green-400">// {currentCase.title} Main Component</p>
-                          <p className="text-blue-300">@Component{'({'}</p>
+                        <div className="terminal p-5 font-mono text-sm rounded-lg overflow-auto">
+                          <p className="text-purple-400">// {currentCase.title} Main Component</p>
+                          <p className="text-white">@Component{'({'}</p>
                           <p className="text-gray-300 ml-4">selector: 'app-{currentCase.title.toLowerCase()}-dashboard',</p>
                           <p className="text-gray-300 ml-4">templateUrl: './dashboard.component.html',</p>
                           <p className="text-gray-300 ml-4">styleUrls: ['./dashboard.component.scss'],</p>
                           <p className="text-gray-300 ml-4">changeDetection: ChangeDetectionStrategy.OnPush</p>
-                          <p className="text-blue-300">{'})'}</p>
-                          <p className="text-blue-300">export class {currentCase.title}DashboardComponent implements OnInit {'{'}</p>
+                          <p className="text-white">{'}'}</p>
+                          <p className="text-white">export class {currentCase.title}DashboardComponent implements OnInit {'{'}</p>
                           <p className="text-gray-300 ml-4">// Observable data streams</p>
-                          <p className="text-blue-300 ml-4">data$ = this.store.select(select{currentCase.title}Data);</p>
-                          <p className="text-blue-300 ml-4">loading$ = this.store.select(select{currentCase.title}Loading);</p>
-                          <p className="text-blue-300 ml-4">error$ = this.store.select(select{currentCase.title}Error);</p>
+                          <p className="text-gray-300 ml-4">data$ = this.store.select(select{currentCase.title}Data);</p>
+                          <p className="text-gray-300 ml-4">loading$ = this.store.select(select{currentCase.title}Loading);</p>
+                          <p className="text-gray-300 ml-4">error$ = this.store.select(select{currentCase.title}Error);</p>
                           <p className="text-gray-300 ml-4"></p>
                           <p className="text-gray-300 ml-4">constructor(</p>
-                          <p className="text-blue-300 ml-8">private store: Store,</p>
-                          <p className="text-blue-300 ml-8">private {currentCase.title.toLowerCase()}Service: {currentCase.title}Service</p>
+                          <p className="text-gray-300 ml-8">private store: Store,</p>
+                          <p className="text-gray-300 ml-8">private {currentCase.title.toLowerCase()}Service: {currentCase.title}Service</p>
                           <p className="text-gray-300 ml-4">) {'{'} {'}'}</p>
                           <p className="text-gray-300 ml-4"></p>
-                          <p className="text-blue-300 ml-4">ngOnInit(): void {'{'}</p>
-                          <p className="text-blue-300 ml-8">this.store.dispatch({currentCase.title}Actions.loadData());</p>
-                          <p className="text-blue-300 ml-4">{'}'}</p>
-                          <p className="text-blue-300">{'}'}</p>
+                          <p className="text-gray-300 ml-4">ngOnInit(): void {'{'}</p>
+                          <p className="text-gray-300 ml-8">this.store.dispatch({currentCase.title}Actions.loadData());</p>
+                          <p className="text-gray-300 ml-4">{'}'}</p>
+                          <p className="text-white">{'}'}</p>
                         </div>
                       </div>
-
+                      
+                      {/* Outcomes */}
                       <div>
-                        <h4 className="text-blue-400 font-semibold flex items-center">
-                          <span className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mr-2 text-xs">5</span>
+                        <h4 className="text-white font-semibold text-lg mb-4 flex items-center">
+                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">5</span>
                           Technical Outcomes
                         </h4>
-                        <div className="grid grid-cols-2 gap-3 mt-2 ml-8">
+                        <div className="grid md:grid-cols-4 gap-3">
                           {currentCase.outcomes.map((outcome, index) => (
-                            <div key={index} className="glass p-3 rounded-lg border border-blue-500/10">
-                              <p className="text-gray-400 text-xs">{outcome.metric}</p>
-                              <p className="text-white font-bold">{outcome.value}</p>
+                            <div key={index} className="glass p-4 rounded-lg border border-white/5">
+                              <p className="text-gray-400 text-xs mb-1">{outcome.metric}</p>
+                              <p className="text-xl font-bold text-white">{outcome.value}</p>
                             </div>
                           ))}
                         </div>
@@ -644,15 +691,16 @@ const CaseStudySection = () => {
           </Card>
 
           {/* Pagination Dots */}
-          <div className="flex justify-center mt-6 space-x-2">
+          <div className="flex justify-center mt-8 space-x-2">
             {caseStudies.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`w-10 h-1 transition-all ${index === activeIndex
-                  ? 'bg-blue-500 w-14'
-                  : 'bg-gray-700'
-                  }`}
+                className={`h-1.5 transition-all ${
+                  index === activeIndex
+                    ? 'bg-purple-500 w-12'
+                    : 'bg-gray-700 w-5'
+                }`}
                 aria-label={`Go to case study ${index + 1}`}
               />
             ))}
@@ -664,3 +712,4 @@ const CaseStudySection = () => {
 };
 
 export default CaseStudySection;
+
