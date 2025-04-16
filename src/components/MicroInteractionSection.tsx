@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { TabsContent } from '@/components/ui/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { motion } from 'framer-motion';
 import { Sparkles, MousePointer, Focus, RotateCw, FolderOpen, AlertCircle } from 'lucide-react';
@@ -61,7 +60,6 @@ const MicroInteractionSection = () => {
           >
             <div className="relative flex items-center justify-center mb-2">
               <Sparkles className="text-indigo-400 h-6 w-6 absolute -left-8" />
-              <span className="text-indigo-400 font-medium">INTERACTIONS</span>
               <Sparkles className="text-indigo-400 h-6 w-6 absolute -right-8" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
@@ -88,27 +86,42 @@ const MicroInteractionSection = () => {
             className="p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl"
           >
             <ToggleGroupItem value="hover" variant="neonChip" className="relative overflow-hidden">
-              <MousePointer className="w-4 h-4 mr-2 inline-block" />
               Hover
             </ToggleGroupItem>
             <ToggleGroupItem value="focus" variant="neonChip" className="relative overflow-hidden">
-              <Focus className="w-4 h-4 mr-2 inline-block" />
               Focus
             </ToggleGroupItem>
             <ToggleGroupItem value="loading" variant="neonChip" className="relative overflow-hidden">
-              <RotateCw className="w-4 h-4 mr-2 inline-block" />
               Loading
             </ToggleGroupItem>
             <ToggleGroupItem value="empty" variant="neonChip" className="relative overflow-hidden">
-              <FolderOpen className="w-4 h-4 mr-2 inline-block" />
               Empty States
             </ToggleGroupItem>
           </ToggleGroup>
         </motion.div>
 
-        {/* Hover States */}
-        {activeTab === 'hover' && (
-          <div className="animate-fade-in">
+        <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as any)} className="w-full">
+          {/* <TabsList className="mx-auto flex justify-center mb-10 backdrop-blur-xl bg-black/40 border border-indigo-500/20 rounded-full overflow-hidden p-1.5">
+            <TabsTrigger value="hover" className="rounded-full px-6 data-[state=active]:bg-indigo-500/20 data-[state=active]:text-indigo-400">
+              <MousePointer className="w-4 h-4 mr-2" />
+              Hover
+            </TabsTrigger>
+            <TabsTrigger value="focus" className="rounded-full px-6 data-[state=active]:bg-indigo-500/20 data-[state=active]:text-indigo-400">
+              <Focus className="w-4 h-4 mr-2" />
+              Focus
+            </TabsTrigger>
+            <TabsTrigger value="loading" className="rounded-full px-6 data-[state=active]:bg-indigo-500/20 data-[state=active]:text-indigo-400">
+              <RotateCw className="w-4 h-4 mr-2" />
+              Loading
+            </TabsTrigger>
+            <TabsTrigger value="empty" className="rounded-full px-6 data-[state=active]:bg-indigo-500/20 data-[state=active]:text-indigo-400">
+              <FolderOpen className="w-4 h-4 mr-2" />
+              Empty States
+            </TabsTrigger>
+          </TabsList> */}
+
+          {/* Hover States */}
+          <TabsContent value="hover" className="animate-fade-in">
             <div className="glass-card border border-indigo-500/20 backdrop-blur-xl bg-black/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)] overflow-hidden rounded-xl">
               <div className="md:flex">
                 <motion.div
@@ -180,12 +193,10 @@ const MicroInteractionSection = () => {
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
 
-        {/* Focus States */}
-        {activeTab === 'focus' && (
-          <div className="animate-fade-in">
+          {/* Focus States */}
+          <TabsContent value="focus" className="animate-fade-in">
             <div className="glass-card border border-indigo-500/20 backdrop-blur-xl bg-black/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)] overflow-hidden rounded-xl">
               <div className="md:flex">
                 <motion.div
@@ -253,12 +264,10 @@ const MicroInteractionSection = () => {
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
 
-        {/* Loading States */}
-        {activeTab === 'loading' && (
-          <div className="animate-fade-in">
+          {/* Loading States */}
+          <TabsContent value="loading" className="animate-fade-in">
             <div className="glass-card border border-indigo-500/20 backdrop-blur-xl bg-black/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)] overflow-hidden rounded-xl">
               <div className="md:flex">
                 <motion.div
@@ -359,12 +368,10 @@ const MicroInteractionSection = () => {
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
 
-        {/* Empty States */}
-        {activeTab === 'empty' && (
-          <div className="animate-fade-in">
+          {/* Empty States */}
+          <TabsContent value="empty" className="animate-fade-in">
             <div className="glass-card border border-indigo-500/20 backdrop-blur-xl bg-black/40 shadow-[0_8px_30px_rgb(0,0,0,0.12)] overflow-hidden rounded-xl">
               <div className="md:flex">
                 <motion.div
@@ -427,8 +434,8 @@ const MicroInteractionSection = () => {
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
+        </Tabs>
 
         {/* Bottom Decorative Element */}
         <div className="flex justify-center mt-16">
@@ -438,8 +445,9 @@ const MicroInteractionSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
 export default MicroInteractionSection;
+

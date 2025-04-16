@@ -154,7 +154,7 @@ const DesignSystemSection = () => {
                 viewport={{ once: true }}
               >
                 <motion.div variants={item}>
-                  <h3 className="text-2xl font-bold mb-8 neon-text-indigo flex items-center">
+                  <h3 className="text-2xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 flex items-center">
                     <Box className="h-5 w-5 mr-2 text-indigo-400" />
                     Button Components
                   </h3>
