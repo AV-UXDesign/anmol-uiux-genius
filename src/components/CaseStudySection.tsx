@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, ExternalLink, FileText, Building, Activity, Brain, Code, ChevronsRight, LucideIcon, Sparkles, Award, Rocket, ArrowRight, Users, Target, Zap } from 'lucide-react';
@@ -267,7 +266,7 @@ const CaseStudySection = () => {
           {/* Navigation Arrows */}
           <button
             onClick={prevCase}
-            className="absolute top-1/2 -left-4 md:-left-10 -translate-y-1/2 z-10 p-3 rounded-full glass hover:scale-110 transition-all duration-300 border border-white/5"
+            className="absolute top-1/2 -left-4 md:-left-10 -translate-y-1/2 z-10 p-3 rounded-full glass hover:scale-110 transition-all duration-300 border border-white/10"
             aria-label="Previous case study"
           >
             <ChevronLeft className="h-5 w-5 text-white" />
@@ -275,21 +274,21 @@ const CaseStudySection = () => {
 
           <button
             onClick={nextCase}
-            className="absolute top-1/2 -right-4 md:-right-10 -translate-y-1/2 z-10 p-3 rounded-full glass hover:scale-110 transition-all duration-300 border border-white/5"
+            className="absolute top-1/2 -right-4 md:-right-10 -translate-y-1/2 z-10 p-3 rounded-full glass hover:scale-110 transition-all duration-300 border border-white/10"
             aria-label="Next case study"
           >
             <ChevronRight className="h-5 w-5 text-white" />
           </button>
 
-          {/* Modern Case Study Card */}
-          <Card className={`overflow-hidden rounded-2xl shadow-2xl glass-card border-0 ${currentCase.gradientColor}`}>
+          {/* Modern Case Study Card with glassmorphism */}
+          <Card className="overflow-hidden rounded-2xl shadow-2xl glass-enhanced border-0">
             <div className="grid md:grid-cols-12 gap-0">
               {/* Left Sidebar */}
               <div className="md:col-span-3 glass-enhanced">
                 <div className="p-8 flex flex-col h-full">
                   {/* Case Study Header */}
                   <div className="flex items-center space-x-3 mb-8">
-                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center glass border border-white/10`}>
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center glass border border-white/10">
                       <currentCase.icon className="h-6 w-6 text-white" />
                     </div>
                     <div>
@@ -341,7 +340,7 @@ const CaseStudySection = () => {
                     <SheetContent className="glass-enhanced backdrop-blur-lg border-none overflow-y-auto w-full sm:max-w-none md:max-w-2xl">
                       <div className="space-y-6 py-6">
                         <div className="flex items-center space-x-3">
-                          <div className={`w-14 h-14 rounded-lg flex items-center justify-center glass border border-white/10`}>
+                          <div className="w-14 h-14 rounded-lg flex items-center justify-center glass border border-white/10">
                             <currentCase.icon className="h-7 w-7 text-white" />
                           </div>
                           <div>
@@ -621,95 +620,4 @@ const CaseStudySection = () => {
                           Key Implementation Features
                         </h4>
                         <div className="grid md:grid-cols-3 gap-4">
-                          <div className="glass p-5 rounded-lg border border-white/5">
-                            <h5 className="text-white font-medium mb-2">Responsive Architecture</h5>
-                            <p className="text-gray-300 text-sm">Built with Angular Material and custom components using responsive design principles.</p>
-                          </div>
-                          <div className="glass p-5 rounded-lg border border-white/5">
-                            <h5 className="text-white font-medium mb-2">State Management</h5>
-                            <p className="text-gray-300 text-sm">Implemented NgRx for global state with Effects API and selectors.</p>
-                          </div>
-                          <div className="glass p-5 rounded-lg border border-white/5">
-                            <h5 className="text-white font-medium mb-2">Performance</h5>
-                            <p className="text-gray-300 text-sm">OnPush change detection, lazy loading, and virtual scrolling for optimal performance.</p>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Sample Code */}
-                      <div className="glass rounded-xl p-6 border border-white/5">
-                        <h4 className="text-white font-semibold text-lg mb-4 flex items-center">
-                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">4</span>
-                          Sample Component
-                        </h4>
-                        <div className="terminal p-5 font-mono text-sm rounded-lg overflow-auto">
-                          <p className="text-purple-400">// {currentCase.title} Main Component</p>
-                          <p className="text-white">@Component{'({'}</p>
-                          <p className="text-gray-300 ml-4">selector: 'app-{currentCase.title.toLowerCase()}-dashboard',</p>
-                          <p className="text-gray-300 ml-4">templateUrl: './dashboard.component.html',</p>
-                          <p className="text-gray-300 ml-4">styleUrls: ['./dashboard.component.scss'],</p>
-                          <p className="text-gray-300 ml-4">changeDetection: ChangeDetectionStrategy.OnPush</p>
-                          <p className="text-white">{'}'}</p>
-                          <p className="text-white">export class {currentCase.title}DashboardComponent implements OnInit {'{'}</p>
-                          <p className="text-gray-300 ml-4">// Observable data streams</p>
-                          <p className="text-gray-300 ml-4">data$ = this.store.select(select{currentCase.title}Data);</p>
-                          <p className="text-gray-300 ml-4">loading$ = this.store.select(select{currentCase.title}Loading);</p>
-                          <p className="text-gray-300 ml-4">error$ = this.store.select(select{currentCase.title}Error);</p>
-                          <p className="text-gray-300 ml-4"></p>
-                          <p className="text-gray-300 ml-4">constructor(</p>
-                          <p className="text-gray-300 ml-8">private store: Store,</p>
-                          <p className="text-gray-300 ml-8">private {currentCase.title.toLowerCase()}Service: {currentCase.title}Service</p>
-                          <p className="text-gray-300 ml-4">) {'{'} {'}'}</p>
-                          <p className="text-gray-300 ml-4"></p>
-                          <p className="text-gray-300 ml-4">ngOnInit(): void {'{'}</p>
-                          <p className="text-gray-300 ml-8">this.store.dispatch({currentCase.title}Actions.loadData());</p>
-                          <p className="text-gray-300 ml-4">{'}'}</p>
-                          <p className="text-white">{'}'}</p>
-                        </div>
-                      </div>
-                      
-                      {/* Outcomes */}
-                      <div>
-                        <h4 className="text-white font-semibold text-lg mb-4 flex items-center">
-                          <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 text-white text-sm">5</span>
-                          Technical Outcomes
-                        </h4>
-                        <div className="grid md:grid-cols-4 gap-3">
-                          {currentCase.outcomes.map((outcome, index) => (
-                            <div key={index} className="glass p-4 rounded-lg border border-white/5">
-                              <p className="text-gray-400 text-xs mb-1">{outcome.metric}</p>
-                              <p className="text-xl font-bold text-white">{outcome.value}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </Card>
-
-          {/* Pagination Dots */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {caseStudies.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`h-1.5 transition-all ${
-                  index === activeIndex
-                    ? 'bg-purple-500 w-12'
-                    : 'bg-gray-700 w-5'
-                }`}
-                aria-label={`Go to case study ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default CaseStudySection;
-
+                          <div className="glass p-5 rounded-lg border border-white/
