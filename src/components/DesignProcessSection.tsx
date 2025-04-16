@@ -6,10 +6,12 @@ import {
   Laptop, Monitor, Database, GitBranch, Sparkles
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 const DesignProcessSection = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [scrollY, setScrollY] = useState(0);
+  const [activeStep, setActiveStep] = useState<'research' | 'user' | 'architecture' | 'wireframing' | 'ui' | 'testing'>('research');
 
   useEffect(() => {
     const sectionEl = sectionRef.current;
@@ -53,6 +55,7 @@ const DesignProcessSection = () => {
 
   const processSteps = [
     {
+      value: 'research',
       icon: <Search className="h-10 w-10 text-blue-400" />,
       title: "Research & Discovery",
       description: "Understanding the problem space through user research, stakeholder interviews, and competitive analysis.",
@@ -60,6 +63,7 @@ const DesignProcessSection = () => {
       devIcon: <Terminal className="floating-dev-icon text-green-400" />
     },
     {
+      value: 'user',
       icon: <Users className="h-10 w-10 text-blue-400" />,
       title: "User Definition",
       description: "Creating user personas, journey maps, and defining key scenarios to guide the design process.",
@@ -67,6 +71,7 @@ const DesignProcessSection = () => {
       devIcon: <Database className="floating-dev-icon text-purple-400" />
     },
     {
+      value: 'architecture',
       icon: <FileText className="h-10 w-10 text-blue-400" />,
       title: "Information Architecture",
       description: "Organizing content and functionality to create intuitive navigation and user flows.",
@@ -74,6 +79,7 @@ const DesignProcessSection = () => {
       devIcon: <GitBranch className="floating-dev-icon text-yellow-400" />
     },
     {
+      value: 'wireframing',
       icon: <PenTool className="h-10 w-10 text-blue-400" />,
       title: "Wireframing & Prototyping",
       description: "Translating requirements into low and high-fidelity wireframes and interactive prototypes.",
@@ -81,6 +87,7 @@ const DesignProcessSection = () => {
       devIcon: <Code className="floating-dev-icon text-blue-400" />
     },
     {
+      value: 'ui',
       icon: <Layers className="h-10 w-10 text-blue-400" />,
       title: "UI Design & Design Systems",
       description: "Creating visually cohesive interfaces and scalable design systems aligned with brand guidelines.",
@@ -88,6 +95,7 @@ const DesignProcessSection = () => {
       devIcon: <Laptop className="floating-dev-icon text-pink-400" />
     },
     {
+      value: 'testing',
       icon: <BarChart className="h-10 w-10 text-blue-400" />,
       title: "Testing & Iteration",
       description: "Validating designs through usability testing and iterating based on user feedback and analytics.",
@@ -124,6 +132,9 @@ const DesignProcessSection = () => {
     "  return iterateDesign(feedback);",
     "};",
   ];
+
+  // Get the currently active process step
+  const activeProcessStep = processSteps.find(step => step.value === activeStep) || processSteps[0];
 
   return (
     <section ref={sectionRef} className="relative py-24 overflow-hidden bg-black min-h-screen z-10">
@@ -214,6 +225,7 @@ const DesignProcessSection = () => {
           >
             <div className="relative flex items-center justify-center mb-2">
               <Sparkles className="text-indigo-400 h-6 w-6 absolute -left-8" />
+              <span className="text-indigo-400 font-medium">PROCESS</span>
               <Sparkles className="text-indigo-400 h-6 w-6 absolute -right-8" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
@@ -226,11 +238,42 @@ const DesignProcessSection = () => {
           </p>
         </div>
 
+        {/* ToggleGroup for design consistency */}
+        <motion.div
+          className="flex justify-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true }}
+        >
+          <ToggleGroup 
+            type="single" 
+            value={activeStep} 
+            onValueChange={(value) => value && setActiveStep(value as any)} 
+            className="p-1 bg-indigo-950/30 backdrop-blur-md rounded-full border border-indigo-500/20 shadow-xl"
+          >
+            {processSteps.map((step) => (
+              <ToggleGroupItem 
+                key={step.value} 
+                value={step.value} 
+                variant="neonChip" 
+                className="relative overflow-hidden"
+              >
+                {step.title.split(' ')[0]}
+              </ToggleGroupItem>
+            ))}
+          </ToggleGroup>
+        </motion.div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 relative z-30">
           {processSteps.map((step, index) => (
             <div
               key={index}
-              className="process-card glass-enhanced rounded-2xl p-6 border border-blue-500/30 shadow-[0_0_25px_rgba(59,130,246,0.15)] hover:border-blue-500/60 transition-all duration-500 transform relative z-20"
+              className={`process-card glass-enhanced rounded-2xl p-6 border ${
+                activeStep === step.value 
+                  ? 'border-blue-500/60 shadow-[0_0_25px_rgba(59,130,246,0.3)]' 
+                  : 'border-blue-500/30 shadow-[0_0_25px_rgba(59,130,246,0.15)]'
+              } hover:border-blue-500/60 transition-all duration-500 transform relative z-20`}
               style={{
                 transitionDelay: `${index * 100}ms`,
                 animationDelay: `${index * 150}ms`,
