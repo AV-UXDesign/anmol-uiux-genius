@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, ExternalLink, FileText, Building, Activity, Brain, Code, ChevronsRight, LucideIcon, Sparkles, Award, Rocket, ArrowRight, Users, Target, Zap } from 'lucide-react';
@@ -620,4 +621,30 @@ const CaseStudySection = () => {
                           Key Implementation Features
                         </h4>
                         <div className="grid md:grid-cols-3 gap-4">
-                          <div className="glass p-5 rounded-lg border border-white/
+                          <div className="glass p-5 rounded-lg border border-white/5">
+                            <h5 className="text-white font-medium mb-3">State Management</h5>
+                            <p className="text-sm text-gray-300">Implemented NgRx for centralized state with actions, reducers, effects, and selectors to manage complex data flow.</p>
+                          </div>
+                          <div className="glass p-5 rounded-lg border border-white/5">
+                            <h5 className="text-white font-medium mb-3">Dynamic Components</h5>
+                            <p className="text-sm text-gray-300">Used Angular's ComponentFactoryResolver for rendering dynamic UI elements based on user configuration.</p>
+                          </div>
+                          <div className="glass p-5 rounded-lg border border-white/5">
+                            <h5 className="text-white font-medium mb-3">Real-time Updates</h5>
+                            <p className="text-sm text-gray-300">Integrated WebSockets with RxJS for instant notifications and live data synchronization.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CaseStudySection;
