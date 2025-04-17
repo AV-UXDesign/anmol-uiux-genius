@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/anmol-uiux-genius/", // ✅ This line is MUST for GitHub Pages
+  base: process.env.NODE_ENV === "production" ? "/anmol-uiux-genius/" : "/",
 
   server: {
     host: "::",
