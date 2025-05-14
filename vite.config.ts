@@ -4,8 +4,8 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  base: process.env.NODE_ENV === "production" ? "/anmol-uiux-genius/" : "/",
+export default defineConfig(() => ({
+  base: "/anmol-uiux-genius/",
 
   server: {
     host: "::",
@@ -13,7 +13,6 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
   resolve: {

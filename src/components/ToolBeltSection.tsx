@@ -85,15 +85,15 @@ const ToolBeltSection = () => {
       category: 'prototyping',
       proficiency: 85
     },
+    // {
+    //   name: 'Lookback.io',
+    //   icon: <Layers />, // Replace with a valid icon, e.g., Layers
+    //   description: 'User interviews, live testing, feedback gathering, and real-time collaboration.',
+    //   category: 'prototyping',
+    //   proficiency: 80
+    // },
     {
-      name: 'Lookback.io',
-      icon: <Layers />, // Replace with a valid icon, e.g., Layers
-      description: 'User interviews, live testing, feedback gathering, and real-time collaboration.',
-      category: 'prototyping',
-      proficiency: 80
-    },
-    {
-      name: 'Analytics',
+      name: 'Google Analytics',
       icon: <BarChart4 />,
       description: 'User insights, behavior tracking, A/B testing',
       category: 'prototyping',
@@ -191,7 +191,7 @@ const ToolBeltSection = () => {
               Development
             </ToggleGroupItem>
             <ToggleGroupItem value="prototyping" variant="neonChip" className="relative overflow-hidden">
-              Prototyping
+              Analytics
             </ToggleGroupItem>
           </ToggleGroup>
         </motion.div>
@@ -211,7 +211,7 @@ const ToolBeltSection = () => {
             />
 
             <CategorySection
-              title="Prototyping & Testing"
+              title="Analytics & Testing Tools"
               icon={<Cpu className="h-5 w-5 text-indigo-400" />}
               tools={toolsByCategory.prototyping}
             />

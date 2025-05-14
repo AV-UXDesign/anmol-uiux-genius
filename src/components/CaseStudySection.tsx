@@ -37,50 +37,6 @@ interface CaseStudy {
 const caseStudies: CaseStudy[] = [
   {
     id: 1,
-    title: "Engagely.ai",
-    subtitle: "CX Automation Platform",
-    company: "AI-Powered Customer Experience",
-    challenge: "The client, a leading CX platform, needed a scalable solution to handle high-volume customer queries across voice, chat, and messaging. Existing solutions were slow and failed to engage users effectively. The challenge was to create an AI-driven conversational experience that felt human, intelligent, and empathetic to users' needs.",
-    designProcess: [
-      "Stakeholder Alignment: Engaged deeply with key stakeholders including CX managers, product owners, and AI experts to ensure the design aligned with business goals and technical feasibility.",
-      "User-Centered Design: Conducted interviews and observational studies to understand user pain points, ensuring the design directly addressed agent frustrations and customer interaction complexities.",
-      "Empathy Mapping & Personas: Focused on understanding not just the user needs but also the emotional journey. Developed personas based on real user data to ensure the solution was both efficient and empathetic.",
-      "Prototyping & Iteration: Delivered several high-fidelity prototypes with integrated conversational flows, using rapid feedback loops to continuously refine the design based on real-world agent and customer feedback."
-    ],
-    designSolution: "Created an AI-powered no-code platform that empowered CX teams to design workflows, conversational UI, and analytics dashboards. Focused on ease of use for agents and personalized customer interactions, ensuring minimal manual effort while improving response time and engagement.",
-    outcome: [
-      "Increased automation rate by 40%, significantly reducing manual interventions and enhancing service quality.",
-      "Improved response times by 45%, reducing user wait time and increasing customer satisfaction.",
-      "Customer NPS score increased by 34% after implementing conversational AI features."
-    ],
-    tools: ["Figma", "Angular", "Voice AI", "Machine Learning", "Prototyping"],
-    personas: [
-      {
-        name: "Ravi",
-        role: "CX Operations Lead",
-        age: 40,
-        goals: ["Increase automation", "Streamline workflows", "Improve customer engagement"],
-        challenges: ["Fragmented tools", "Slow response times", "Limited analytics"]
-      },
-      {
-        name: "Sita",
-        role: "Customer Support Agent",
-        age: 28,
-        goals: ["Reduce task burden", "Enhance personal interactions with customers", "Improve response efficiency"],
-        challenges: ["Multiple tools", "High cognitive load", "Lack of automation"]
-      }
-    ],
-    impact: [
-      { metric: "Automation Rate", value: "+40%" },
-      { metric: "Response Time", value: "Improved by 45%" },
-      { metric: "NPS Score", value: "+34%" }
-    ],
-    icon: Building,
-    color: "from-indigo-900/30 to-violet-900/30",
-    gradientColor: "bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-indigo-500/10"
-  },
-  {
-    id: 2,
     title: "Nysa Health",
     subtitle: "Health Insurance Agent Portal",
     company: "Health Insurance Solutions",
@@ -124,7 +80,7 @@ const caseStudies: CaseStudy[] = [
     gradientColor: "bg-gradient-to-r from-green-500/10 via-teal-500/10 to-green-500/10"
   },
   {
-    id: 3,
+    id: 2,
     title: "Nysa Motor",
     subtitle: "Vehicle Insurance Platform",
     company: "Motor Insurance Solutions",
@@ -166,6 +122,50 @@ const caseStudies: CaseStudy[] = [
     icon: Car,
     color: "from-amber-900/30 to-orange-900/30",
     gradientColor: "bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10"
+  },
+  {
+    id: 3,
+    title: "Engagely.ai",
+    subtitle: "CX Automation Platform",
+    company: "AI-Powered Customer Experience",
+    challenge: "The client, a leading CX platform, needed a scalable solution to handle high-volume customer queries across voice, chat, and messaging. Existing solutions were slow and failed to engage users effectively. The challenge was to create an AI-driven conversational experience that felt human, intelligent, and empathetic to users' needs.",
+    designProcess: [
+      "Stakeholder Alignment: Engaged deeply with key stakeholders including CX managers, product owners, and AI experts to ensure the design aligned with business goals and technical feasibility.",
+      "User-Centered Design: Conducted interviews and observational studies to understand user pain points, ensuring the design directly addressed agent frustrations and customer interaction complexities.",
+      "Empathy Mapping & Personas: Focused on understanding not just the user needs but also the emotional journey. Developed personas based on real user data to ensure the solution was both efficient and empathetic.",
+      "Prototyping & Iteration: Delivered several high-fidelity prototypes with integrated conversational flows, using rapid feedback loops to continuously refine the design based on real-world agent and customer feedback."
+    ],
+    designSolution: "Created an AI-powered no-code platform that empowered CX teams to design workflows, conversational UI, and analytics dashboards. Focused on ease of use for agents and personalized customer interactions, ensuring minimal manual effort while improving response time and engagement.",
+    outcome: [
+      "Increased automation rate by 40%, significantly reducing manual interventions and enhancing service quality.",
+      "Improved response times by 45%, reducing user wait time and increasing customer satisfaction.",
+      "Customer NPS score increased by 34% after implementing conversational AI features."
+    ],
+    tools: ["Figma", "Angular", "Voice AI", "Machine Learning", "Prototyping"],
+    personas: [
+      {
+        name: "Ravi",
+        role: "CX Operations Lead",
+        age: 40,
+        goals: ["Increase automation", "Streamline workflows", "Improve customer engagement"],
+        challenges: ["Fragmented tools", "Slow response times", "Limited analytics"]
+      },
+      {
+        name: "Sita",
+        role: "Customer Support Agent",
+        age: 28,
+        goals: ["Reduce task burden", "Enhance personal interactions with customers", "Improve response efficiency"],
+        challenges: ["Multiple tools", "High cognitive load", "Lack of automation"]
+      }
+    ],
+    impact: [
+      { metric: "Automation Rate", value: "+40%" },
+      { metric: "Response Time", value: "Improved by 45%" },
+      { metric: "NPS Score", value: "+34%" }
+    ],
+    icon: Building,
+    color: "from-indigo-900/30 to-violet-900/30",
+    gradientColor: "bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-indigo-500/10"
   },
   {
     id: 4,
